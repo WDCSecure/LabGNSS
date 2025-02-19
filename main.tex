@@ -1,0 +1,263 @@
+% main.tex
+
+% Uncomment the following line if you need to adjust title spacing.
+% \newcommand{\compacttitlespacing}{0} % disable when we need room for authors
+
+% ----------------------------------------
+% Document Class and Top Matter Settings
+% ----------------------------------------
+\documentclass[sigconf]{template/acmart}
+
+% Remove ACM-specific references and permissions
+\setcopyright{none} % Disable copyright
+\makeatletter
+\@printpermissionfalse
+\@printcopyrightfalse
+\@acmownedfalse
+\makeatother
+
+% Remove ACM reference format
+\settopmatter{printacmref=false} % Disable ACM reference format
+\renewcommand\footnotetextcopyrightpermission[1]{}
+
+% ----------------------------------------
+% Custom Definition for \BibTeX (Optional)
+% ----------------------------------------
+% The following defines the \BibTeX command in a specific style based on Oren Patashnik's original documentation.
+% Uncomment these lines if you want to use this custom formatting for \BibTeX.
+% defining the \BibTeX command - from Oren Patashnik's original BibTeX documentation.
+% \def\BibTeX{{\rm B\kern-.05em{\sc i\kern-.025em b}\kern-.08emT\kern-.1667em\lower.7ex\hbox{E}\kern-.125emX}}
+    
+% ----------------------------------------
+% Packages for Numbers, Units, and Tables
+% ----------------------------------------
+\usepackage{nicefrac}
+\usepackage{siunitx}
+\usepackage{array,framed}
+\usepackage{booktabs}
+
+% ----------------------------------------
+% Graphics and Color Packages
+% ----------------------------------------
+\usepackage{
+  color,
+  float,
+  epsfig,
+  wrapfig,
+  graphics,
+  graphicx,
+  subcaption
+}
+% Uncomment the following line if you need additional named colors.
+% \usepackage[dvipsnames]{xcolor}
+
+% ----------------------------------------
+% Packages for Symbols and Fonts
+% ----------------------------------------
+\let\Bbbk\relax  % Relax \Bbbk if already defined (e.g., by acmart)
+\usepackage{textcomp,amssymb}
+\usepackage{setspace}
+% Uncomment the following line if you require additional AMS fonts.
+% \usepackage{amsfonts}
+\usepackage{latexsym,fancyhdr,url}
+
+% ----------------------------------------
+% Packages for Lists, Algorithms, and Parsing
+% ----------------------------------------
+\usepackage{enumerate}
+\usepackage{algorithm2e}
+\usepackage{algpseudocode}
+\usepackage{graphics} % (Note: duplicate; consider removing if not needed)
+\usepackage{xparse}   % For advanced command parsing (e.g., \edist)
+\usepackage{xspace}
+\usepackage{multirow}
+\usepackage{csvsimple}
+\usepackage{balance}
+% Uncomment the following line if you need to balance columns in two-column mode.
+% \usepackage{flushend}
+
+% ----------------------------------------
+% Optional Font Packages
+% ----------------------------------------
+% Uncomment the following line to use Times and Avant fonts.
+% \usepackage{mathptmx,avant}
+
+% ----------------------------------------
+% TikZ and PGFPlots Packages
+% ----------------------------------------
+\usepackage{
+  tikz,
+  pgfplots,
+  pgfplotstable
+}
+\usepackage{hyperref} % For hyperlinks
+
+\usetikzlibrary{
+  shapes.geometric,
+  arrows,
+  external,
+  pgfplots.groupplots,
+  matrix
+}
+
+\pgfplotsset{compat=1.9}
+% Uncomment the following lines to externalize TikZ images (improves compilation speed in complex documents).
+% \tikzexternalize[prefix=images/]
+% \tikzexternalenable
+
+% ----------------------------------------
+% Page Numbering and Style (Optional)
+% ----------------------------------------
+% Uncomment these lines to set page numbering and page style if desired.
+% \pagenumbering{arabic}
+% \pagestyle{plain}
+
+% ----------------------------------------
+% Math Packages and Definitions
+% ----------------------------------------
+\usepackage{mathtools,}
+\DeclarePairedDelimiter\abs{\lvert}{\rvert}
+\DeclarePairedDelimiter\norm{\lVert}{\rVert}
+
+% Uncomment the following line to set a specific math font.
+% \setmathfont{Latin Modern Math}[version=lm]
+\DeclareMathAlphabet{\mathcal}{OMS}{cmsy}{m}{n}
+% The following math alphabet declarations are commented out by default.
+% Uncomment them if you need to redefine these symbols.
+% \DeclareSymbolFont{operators}{T1}{cmr}{m}{n}
+% \DeclareSymbolFont{letters}{OML}{cmm}{m}{it}
+% \DeclareSymbolFont{symbols}{OMS}{cmsy}{m}{n}
+% \DeclareSymbolFont{largesymbols}{OMX}{cmex}{m}{n}
+
+% Optional font settings:
+% Uncomment the following lines if you prefer using Times font or setting the mathcal font to Arial.
+% \usepackage{times}
+% \setmathcal{Arial}
+
+% ----------------------------------------
+% Page Layout Adjustments (Optional)
+% ----------------------------------------
+% Uncomment and adjust these settings if you need to control orphans/widows.
+% \brokenpenalty=1000
+% \clubpenalty=1000
+% \widowpenalty=10
+
+% ----------------------------------------
+% Graphics Extensions and Custom Definitions
+% ----------------------------------------
+\DeclareGraphicsExtensions{%
+    .png,.PNG,%
+    .pdf,.PDF,%
+    .jpg,.mps,.jpeg,.jbig2,.jb2,%
+    .JPG,.JPEG,.JBIG2,.JB2}
+    
+% Input custom definitions from defs.tex.
+% If you move defs.tex to a different directory, update the path accordingly.
+\input{template/defs}
+
+% Adjust caption and footer spacing
+\setlength{\belowcaptionskip}{-10pt} 
+\setlength{\footskip}{30pt}
+\setlength{\abovecaptionskip}{5pt plus 3pt minus 2pt} 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%                               Begin Document                               %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+
+% Optional: Set the font family for the document text.
+% Uncomment the following line if you want to change the document font.
+% \fontfamily{lmr}\selectfont
+
+% Clear header settings (from fancyhdr)
+\fancyhead{}
+
+% ---------------------------
+% Document Title
+% ---------------------------
+\def\thetitle{Lab GNSS Report}
+\title{\thetitle}
+
+% ---------------------------
+% Authors
+% ---------------------------
+\author{Andrea Botticella}
+\authornote{The authors collaborated closely in developing this project.}
+\email{andrea.botticella@studenti.polito.it}
+\affiliation{%
+  \institution{Politecnico di Torino}
+  \city{Turin}
+  \country{Italy}
+}
+
+\author{Elia Innocenti}
+\authornotemark[1]
+\email{elia.innocenti@studenti.polito.it}
+\affiliation{%
+  \institution{Politecnico di Torino}
+  \city{Turin}
+  \country{Italy}
+}
+
+\author{Renato Mignone}
+\authornotemark[1]
+\email{renato.mignone@studenti.polito.it}
+\affiliation{%
+  \institution{Politecnico di Torino}
+  \city{Turin}
+  \country{Italy}
+}
+
+\author{Simone Romano}
+\authornotemark[1]
+\email{simone.romano2@studenti.polito.it}
+\affiliation{%
+  \institution{Politecnico di Torino}
+  \city{Turin}
+  \country{Italy}
+}
+
+% Short author list for page headers
+\renewcommand{\shortauthors}{Botticella, Innocenti, Mignone, and Romano}
+
+\date{January 01, 1990} % TODO: change the date
+
+% ---------------------------
+% Abstract Section
+% ---------------------------
+\input{sections/00-abstract}
+
+% Create the title block
+\maketitle
+
+% ---------------------------
+% Document Keywords
+% ---------------------------
+\keywords{LaTeX template, ACM CCS, ACM}
+
+% ---------------------------
+% Main Content Sections
+% ---------------------------
+\input{sections/01-introduction}
+
+% ----------------------------------------
+% Bibliography (Optional)
+% ----------------------------------------
+% Uncomment the following lines to include a bibliography.
+% \bibliographystyle{template/ACM-Reference-Format}
+% \bibliography{bib}
+
+% ----------------------------------------
+% Appendix (Optional)
+% ----------------------------------------
+% Uncomment the following lines to add an appendix.
+% \appendix
+% \input{appendix}
+
+\end{document}
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: t
+%%% End:
