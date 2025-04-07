@@ -6,7 +6,8 @@
 % ----------------------------------------
 % Document Class and Top Matter Settings
 % ----------------------------------------
-\documentclass[sigconf, review]{template/acmart}
+% \documentclass[sigconf, review]{template/acmart}
+\documentclass[sigconf]{template/acmart}
 
 % Remove ACM-specific references and permissions
 \setcopyright{none} % Disable copyright
@@ -15,6 +16,11 @@
 \@printcopyrightfalse
 \@acmownedfalse
 \makeatother
+
+\acmConference{Wireless Security Report}{Torino}{2024} % set a possibly significant conference name
+\acmPrice{} % leave the rest empty. These will still appear.
+\acmISBN{}
+\acmDOI{}
 
 % Remove ACM reference format
 \settopmatter{printacmref=false} % Disable ACM reference format
@@ -26,7 +32,7 @@
 % The following defines the \BibTeX command in a specific style based on Oren Patashnik's original documentation.
 % Uncomment these lines if you want to use this custom formatting for \BibTeX.
 % defining the \BibTeX command - from Oren Patashnik's original BibTeX documentation.
-% \def\BibTeX{{\rm B\kern-.05em{\sc i\kern-.025em b}\kern-.08emT\kern-.1667em\lower.7ex\hbox{E}\kern-.125emX}}
+\def\BibTeX{{\rm B\kern-.05em{\sc i\kern-.025em b}\kern-.08emT\kern-.1667em\lower.7ex\hbox{E}\kern-.125emX}}
     
 % ----------------------------------------
 % Packages for Numbers, Units, and Tables
@@ -35,6 +41,7 @@
 \usepackage{siunitx}
 \usepackage{array,framed}
 \usepackage{booktabs}
+\usepackage{textcomp}
 
 % ----------------------------------------
 % Graphics and Color Packages
@@ -61,6 +68,10 @@
 % \usepackage{amsfonts}
 \usepackage{latexsym,fancyhdr,url}
 
+\newcommand{\cooltext}[1]{%
+  \texttt{\colorbox{gray!15}{\textcolor{black}{#1}}}%
+}
+
 % ----------------------------------------
 % Packages for Lists, Algorithms, and Parsing
 % ----------------------------------------
@@ -71,10 +82,42 @@
 \usepackage{xparse}   % For advanced command parsing (e.g., \edist)
 \usepackage{xspace}
 \usepackage{multirow}
+\usepackage{makecell}
 \usepackage{csvsimple}
 \usepackage{balance}
+\usepackage{listings}
+\usepackage{enumitem}
 % Uncomment the following line if you need to balance columns in two-column mode.
 % \usepackage{flushend}
+
+% Custom settings for listings
+\lstset{
+    language=Python,                    % Sets the programming language for syntax highlighting
+    basicstyle=\footnotesize\ttfamily,  % Sets the font style and size for the code
+    keywordstyle=\color{blue},          % Style applied to keywords (e.g., "def", "import")
+    commentstyle=\color{gray},          % Style applied to comments (e.g., lines starting with "#")
+    stringstyle=\color{red},            % Style applied to strings (e.g., text within quotes)
+    % backgroundcolor=\color{gray!10},  % Background color for the code block (light gray in this case)
+    % numbers=left,                     % Displays line numbers on the left side of the code block
+    % numberstyle=\tiny,                % Font size/style for line numbers
+    % stepnumber=1,                     % Line number increment (e.g., every 1 line gets a number)
+    % numbersep=5pt,                    % Distance between the line numbers and the code
+    linewidth=0.95\linewidth,           % Code block occupies 80% of text width
+    xleftmargin=-20pt,                  % Moves the listing 20pt closer to the left margin
+    xrightmargin=5pt,                   % Optional: Adds extra padding on the right
+    breaklines=true,                    % Automatically breaks long lines to fit within the page width
+    captionpos=b,                       % Places the caption below the code block
+    abovecaptionskip=5pt,               % Adjusts the space above the caption to 5pt
+    belowcaptionskip=8pt,               % Adjusts the space below the caption to 8pt
+}
+
+% Configure bullet points with customized size
+\setlist[itemize,1]{label={\Large\textbullet}, leftmargin=1em} % First level: larger bullet point
+\setlist[itemize,2]{label={\Large\textbullet}, leftmargin=1em} % Second level: larger bullet point and indented by 1em
+
+% Configure enumerate lists with customized size
+\setlist[enumerate,1]{label=\arabic*., leftmargin=1.5em} % First level: indented by 1em
+\setlist[enumerate,2]{label=\arabic*., leftmargin=1em}   % Second level: indented by 1em
 
 % ----------------------------------------
 % Optional Font Packages
@@ -111,6 +154,10 @@
 % Uncomment these lines to set page numbering and page style if desired.
 % \pagenumbering{arabic}
 % \pagestyle{plain}
+
+% Trying to force the review numbering
+\usepackage[switch]{lineno} % TODO: check
+\renewcommand\linenumberfont{\normalfont\small\color{black}} % TODO: check color
 
 % ----------------------------------------
 % Math Packages and Definitions
@@ -183,45 +230,53 @@
 % Authors
 % ---------------------------
 \author{Andrea Botticella}
-\authornote{The authors collaborated closely in developing this project.}
+\authornote{
+  The authors collaborated closely in developing this project.
+}
+\authornote{
+  All the authors are students at Politecnico di Torino, Turin, Italy.
+}
 \email{andrea.botticella@studenti.polito.it}
 \affiliation{%
-  \institution{Politecnico di Torino}
-  \city{Turin}
-  \country{Italy}
+  % \institution{Politecnico di Torino}
+  % \city{Turin}
+  % \country{Italy}
 }
 
 \author{Elia Innocenti}
 \authornotemark[1]
+\authornotemark[2]
 \email{elia.innocenti@studenti.polito.it}
 \affiliation{%
-  \institution{Politecnico di Torino}
-  \city{Turin}
-  \country{Italy}
+  % \institution{Politecnico di Torino}
+  % \city{Turin}
+  % \country{Italy}
 }
 
 \author{Renato Mignone}
 \authornotemark[1]
+\authornotemark[2]
 \email{renato.mignone@studenti.polito.it}
 \affiliation{%
-  \institution{Politecnico di Torino}
-  \city{Turin}
-  \country{Italy}
+  % \institution{Politecnico di Torino}
+  % \city{Turin}
+  % \country{Italy}
 }
 
 \author{Simone Romano}
 \authornotemark[1]
+\authornotemark[2]
 \email{simone.romano2@studenti.polito.it}
 \affiliation{%
-  \institution{Politecnico di Torino}
-  \city{Turin}
-  \country{Italy}
+  % \institution{Politecnico di Torino}
+  % \city{Turin}
+  % \country{Italy}
 }
 
 % Short author list for page headers
 \renewcommand{\shortauthors}{Botticella, Innocenti, Mignone, and Romano}
 
-\date{January 01, 1990} % TODO: change the date
+\date{}
 
 % ---------------------------
 % Abstract Section
@@ -230,6 +285,9 @@
 
 % Create the title block
 \maketitle
+
+% Add line numbers for review
+\linenumbers
 
 % ---------------------------
 % Document Keywords
@@ -242,18 +300,18 @@
 \input{sections/01-introduction}
 
 % ----------------------------------------
-% Bibliography (Optional)
+% Appendix
 % ----------------------------------------
-% Uncomment the following lines to include a bibliography.
-% \bibliographystyle{template/ACM-Reference-Format}
-% \bibliography{bib}
+% \clearpage
+% \appendix
+% \input{appendix/A-appendix}
 
 % ----------------------------------------
-% Appendix (Optional)
+% Bibliography
 % ----------------------------------------
-% Uncomment the following lines to add an appendix.
-% \appendix
-% \input{appendix}
+\nocite{*} % Include all references from the .bib file
+\bibliographystyle{template/ACM-Reference-Format}
+\bibliography{bibliography/references}
 
 \end{document}
 
