@@ -4,7 +4,6 @@
 % to the output directory.
 
 % Declare global variables and initialize project paths
-global;            % Declare global variables (if any)
 InitProject();     % Set up MATLAB paths and results folder
 p = PathManager(); % Retrieve project folder structure
 
