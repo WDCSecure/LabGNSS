@@ -1,0 +1,10 @@
+White paper, “Using GNSS Raw Measurements on Android Devices”
+- https://www.gsc-europa.eu/sites/default/files/sites/all/files/gnss_raw_measurement_web_0.pdf
+
+GNSS Analysis MATLAB code (or app) and Android Logger APK can be downloaded from:
+- GnssAnalysis[OS].zip: https://github.com/google/gps-measurement-tools/releases
+- Gnsslogger.apk: https://github.com/google/gps-measurement-tools/releases/tag/2.0.0.1
+
+- https://developer.android.com/reference/android/location/GnssMeasurement
+- http://gpsworld.com/google-opens-up-gnss-pseudoranges/
+- https://www.gsa.europa.eu/sites/default/files/expo/frank_van_diggelen_keynote_android_gnss_measurements_update.pdf
