@@ -1,46 +1,44 @@
 # Lab-Material GNSS Processing Environment
 
-This directory contains all the resources needed to complete the GNSS lab assignment for the **Wireless and Device-to-Device Communication Security** course.
-
-This directory contains a complete MATLAB environment for processing Android GNSS Logger measurements: computing pseudoranges, C/N₀, weighted‑least‑squares PVT, ADR, and spoofing experiments. You can run demo datasets, your own Android logs, and spoofing tests, with all outputs automatically saved under `results/`.
+This directory provides all the resources and a complete MATLAB environment needed to complete the GNSS lab assignment for the **Wireless and Device-to-Device Communication Security** course. It supports processing Android GNSS Logger measurements, including pseudoranges, C/N₀, weighted‑least‑squares PVT, ADR, and spoofing experiments. You can run demo datasets, your own Android logs, and spoofing tests, with all outputs automatically saved under `results/`.
 
 ## Dependencies
 
-- **MATLAB R2020a** or later (no additional toolboxes required).
-- Internet access (optional) for NASA CCDIS ephemeris downloads.
-- GNSSLogger App on Android (to generate new logs).
-
+- **MATLAB R2020a** or later (no additional toolboxes required).  
+- Internet access (optional) for NASA CCDIS ephemeris downloads.  
+- **GNSSLogger App** on Android (to generate new logs).  
+  
 ## Directory Structure
 
 ```
 Lab-Material/
-├── configs/                  # Experiment configuration files
-│   └── spoof_configs/        # .m scripts returning a spoof struct
+├── configs/                              # Experiment configuration files
+│   └── spoof_configs/                    # .m scripts returning a spoof struct
 ├── data/
-│   └── android_logs/         # Place Android .txt logs here
-├── results/                  # Auto‑created output figures and data
-│   ├── demo/                 # Demo dataset outputs
-│   ├── android/              # Android log outputs
-│   ├── spoof/                # Spoofing test outputs
-│   └── custom/               # Custom experiments
+│   └── android_logs/                     # Place Android .txt logs here
+├── results/                              # Auto‑created output figures and data
+│   ├── demo/                             # Demo dataset outputs
+│   ├── android/                          # Android log outputs
+│   ├── spoof/                            # Spoofing test outputs
+│   └── custom/                           # Custom experiments
 ├── scripts/
 │   └── matlab/
-│       ├── core/             # Reusable functions & initialization
+│       ├── core/                         # Reusable functions & initialization
 │       │   ├── InitProject.m
 │       │   ├── PathManager.m
 │       │   ├── SetDataFilter.m
 │       │   ├── SaveFigures.m
-│       │   └── utils/        # Helpers (e.g. physconst.m)
-│       └── tasks/            # Top‑level experiment scripts
+│       │   └── utils/                    # Helpers (e.g. physconst.m)
+│       └── tasks/                        # Top‑level experiment scripts
 │           ├── RunDatasetAnalysis.m
 │           ├── RunAndroidLogAnalysis.m
 │           ├── RunDemo.m
 │           └── SpoofingTest.m
 ├── tools/
 │   └── opensource/
-│       ├── library/          # GNSS‑processing functions from NavSAS/Google
-│       └── demoFiles/        # Provided demo datasets
-└── README.md                 # This file
+│       ├── library/                      # GNSS‑processing functions from NavSAS/Google
+│       └── demoFiles/                    # Provided demo datasets
+└── README.md                             # This file
 ```
 
 ## File Roles
@@ -84,19 +82,56 @@ Add new spoof scenarios by dropping a `.m` function here.
 
 ## Data Formats
 
-- **Android logs**: GNSSLogger `.txt` pseudorange logs.
-- **Demo datasets**: similar `.txt` logs plus RINEX navigation files (`hourXXXX.xx*`).
-- **Directory per dataset**: each dataset folder must contain at least one `.txt` file.
+- **Android logs**: GNSSLogger `.txt` pseudorange logs.  
+  These logs contain raw GNSS measurements collected from Android devices.
+- **Demo datasets**: similar `.txt` logs plus RINEX navigation files (`hourXXXX.xx*`).  
+  RINEX files provide satellite ephemeris data required for precise positioning.
+- **Directory per dataset**: each dataset folder must contain at least one `.txt` file.  
+  Ensure that all required files are placed in the correct directory structure for processing.
 
 ## How to Run
 
 ### Initialize environment
 
+Navigate to the Lab-Material folder using one of the following methods:
+1. Use the MATLAB command line:
 ```
 >> cd /path/to/Lab-Material
+```
+2. Use the "Browse for folder" GUI option in MATLAB to select the Lab-Material directory.
+
+Run the `InitProject` script to set up all necessary paths and initialize the environment:
+```
 >> InitProject
 Project paths set. Results at .../Lab-Material/results
 ```
+
+> [!NOTE]
+> If running `InitProject` fails due to missing paths, manually add the required paths first to enable the script to execute.
+> 
+> <details closed>
+> <summary><b>Troubleshooting</b></summary>
+> 
+> 1. Open MATLAB and navigate to the `scripts/matlab/core` directory.
+> 2. Add the required paths manually using the `addpath` command:
+>    ```
+>    >> addpath(genpath('/path/to/Lab-Material/scripts/matlab'))
+>    ```
+> 3. Alternatively, you can use the MATLAB GUI:
+>    - In the left panel, right-click on the `scripts/matlab` directory (or any subdirectory).
+>    - Select **Add to Path** -> **Current Folder**.
+> 4. Save the updated paths to ensure they persist across sessions:
+>    ```
+>    >> savepath
+>    ```
+> 5. Retry running the `InitProject` script:
+>    ```
+>    >> InitProject
+>    ```
+> If the issue persists, verify that all subdirectories under `scripts/matlab` are accessible and contain the necessary files.  
+> Additionally, ensure that there are no typos in the directory paths.
+> 
+> </details>
 
 ### Process demo datasets
 
@@ -104,7 +139,9 @@ Project paths set. Results at .../Lab-Material/results
 >> RunDatasetAnalysis
 ```
 
-All demo subfolders under `tools/opensource/demoFiles/` with `.txt` logs will be processed; outputs in `results/demo/<dataset>/`.
+All demo subfolders under `tools/opensource/demoFiles/` with `.txt` logs will be processed.  
+The outputs will be saved in `results/demo/<dataset>/`.  
+Ensure that the demo datasets are correctly placed in the `demoFiles` directory before running this script.
 
 ### Process your Android logs
 
@@ -113,7 +150,9 @@ All demo subfolders under `tools/opensource/demoFiles/` with `.txt` logs will be
 >> RunAndroidLogAnalysis
 ```
 
-Outputs go to `results/android/<logname>/`.
+This script processes all `.txt` files in the `data/android_logs/` directory.  
+The outputs will be saved in `results/android/<logname>/`.  
+Make sure the `.txt` files are properly formatted and contain valid GNSS measurements.
 
 ### Single‑run demo with spoof/ADR
 
@@ -157,6 +196,6 @@ Executes every config in `configs/spoof_configs/` against the first Android log.
 - Add `CustomFilterTest.m` in `tasks/` to compare different SetDataFilter settings.
 - Automate report generation by exporting figures and tables to a LaTeX-friendly folder.
 
---
+---
 
 Enjoy your GNSS processing workflow!

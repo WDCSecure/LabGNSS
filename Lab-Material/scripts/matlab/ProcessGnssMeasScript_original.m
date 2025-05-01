@@ -8,7 +8,7 @@ clc; close all; clear all;
 
 %------------------ Refactored path setup ------------------
 scriptDir = fileparts(mfilename('fullpath'));
-projRoot  = fileparts(fileparts(fileparts(scriptDir)));
+projRoot  = fileparts(fileparts(scriptDir));
 rootTools = fullfile(projRoot, 'tools', 'opensource');
 addpath(fullfile(rootTools, 'library'));
 
