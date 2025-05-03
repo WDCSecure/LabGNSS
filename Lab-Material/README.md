@@ -91,6 +91,28 @@ Add new spoof scenarios by dropping a `.m` function here.
 
 ## How to Run
 
+### Use the original script
+
+To use the original script, follow these steps:
+
+1. Navigate to the folder containing the script:
+   ```
+   /LabGNSS/Lab-Material/scripts/matlab/original/
+   ```
+
+2. Open the script `ProcessGnssMeasScript_original.m` in MATLAB.
+
+3. Update the following variables in the script to match the log you want to process:
+   - `prFileName`: Set this to the name of your GNSS log file (e.g., `gnss_log_2023_03_17_16_54_04.txt`).
+   - `dirName`: Set this to the directory containing your GNSS log file.
+
+4. Run the script in MATLAB:
+   ```
+   >> ProcessGnssMeasScript_original
+   ```
+
+The script will process the specified log and generate outputs such as figures and data files. Ensure that the log file is correctly formatted and placed in the specified directory before running the script.
+
 ### Initialize environment
 
 Navigate to the Lab-Material folder using one of the following methods:
