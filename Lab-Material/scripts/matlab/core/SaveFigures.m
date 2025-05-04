@@ -4,12 +4,12 @@ function SaveFigures(figHandles, outDir, prefix)
 %   Each figure is saved with a filename that includes the specified prefix.
 
 % Create the output directory if it does not exist
-if ~exist(outDir,'dir')
+if ~exist(outDir, 'dir')
     mkdir(outDir); % Create the directory
 end
 
 % Iterate through each figure handle
-for k=1:numel(figHandles)
+for k = 1:numel(figHandles)
     % Construct the filename for the figure
     fname = fullfile(outDir, sprintf('%s_fig%d.png', prefix, k));
     % Save the figure as a PNG file

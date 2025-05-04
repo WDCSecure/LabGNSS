@@ -6,3 +6,6 @@ out/
 
 # Temporary files
 tmp/
+hour*[0-9][0-9][0-9][0-9].[0-9][0-9]n
+hour*[0-9][0-9][0-9][0-9].[0-9][0-9]n.gz
+raw.csv

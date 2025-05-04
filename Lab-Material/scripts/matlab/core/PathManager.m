@@ -11,12 +11,14 @@ scriptDir = fileparts(mfilename('fullpath'));
 projRoot  = fileparts(fileparts(fileparts(scriptDir)));
 
 % Define paths for various subdirectories
-paths.core      = fullfile(projRoot,'scripts','matlab','core'); % Core scripts
-paths.tasks     = fullfile(projRoot,'scripts','matlab','tasks'); % Task scripts
-paths.lib       = fullfile(projRoot,'tools','opensource','library'); % External libraries
-paths.demo      = fullfile(projRoot,'tools','opensource','demoFiles'); % Demo datasets
-paths.android   = fullfile(projRoot,'data','android_logs'); % Android log files
-paths.results   = fullfile(projRoot,'results'); % Results directory
-paths.spoofConf = fullfile(projRoot,'configs','spoof_configs'); % Spoofing configurations
-paths.utils     = fullfile(paths.core,'utils'); % Utility scripts
+paths.core          = fullfile(projRoot,'scripts','matlab','core');        % Core scripts
+paths.tasks         = fullfile(projRoot,'scripts','matlab','tasks');       % Task scripts
+paths.utils         = fullfile(projRoot,'scripts','matlab','utils');       % Utility scripts
+paths.lib           = fullfile(projRoot,'tools','opensource','library');   % External libraries
+paths.demo          = fullfile(projRoot,'tools','opensource','demoFiles'); % Demo datasets
+paths.data          = fullfile(projRoot,'data');                           % Data directory
+paths.Samsung_A51   = fullfile(paths.data,'Samsung_A51');                  % Samsung A51 directory
+paths.Xiaomi_11TPro = fullfile(paths.data,'Xiaomi_11TPro');                % Xiaomi 11T Pro directory
+paths.results       = fullfile(projRoot,'results');                        % Results directory
+paths.spoofConf     = fullfile(projRoot,'configs','spoof_configs');        % Spoofing configurations
 end

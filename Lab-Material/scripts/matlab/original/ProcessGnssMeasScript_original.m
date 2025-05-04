@@ -6,7 +6,7 @@
 
 clc; close all; clear all;
 
-%------------------ Refactored path setup ------------------
+%------------------------ Refactored path setup ---------------------------
 scriptDir  = fileparts(mfilename('fullpath'));
 projRoot   = fileparts(fileparts(fileparts(scriptDir)));
 rootTools  = fullfile(projRoot, 'tools', 'opensource');
@@ -14,7 +14,7 @@ samsungDir = fullfile(projRoot, 'data', 'Samsung_A51', 'gnss_logs');
 xiaomiDir  = fullfile(projRoot, 'data', 'Xiaomi_11TPro', 'gnss_logs');
 addpath(fullfile(rootTools, 'library'));
 
-% ***** SETTINGS *********************************************************
+% **************************** SETTINGS ***********************************
 %% input data (GNSS logger)
 prFileName = 'gnss_log_2023_03_17_16_54_04.txt';
 
@@ -36,23 +36,23 @@ prFileName = 'gnss_log_2023_03_17_16_54_04.txt';
 
 % point to specific dataset under demoFiles
 % (originally demoFiles/dataset_b)
-dirName    = fullfile(rootTools,  'demoFiles', 'dataset_b');
+dirName = fullfile(rootTools,  'demoFiles', 'dataset_b');
 
 % Samsung A51 Tests
-% dirName    = fullfile(samsungDir, 'Piazza_Castello');
-% dirName    = fullfile(samsungDir, 'Tram_15_trip_Castello_to_Pescatore');
-% dirName    = fullfile(samsungDir, 'Monte_Cappuccini_ascent');
-% dirName    = fullfile(samsungDir, 'Monte_Cappuccini');
-% dirName    = fullfile(samsungDir, 'Parco_del_Valentino_1');
-% dirName    = fullfile(samsungDir, 'Parco_del_Valentino_2');
+% dirName = fullfile(samsungDir, 'Piazza_Castello');
+% dirName = fullfile(samsungDir, 'Tram_15_trip_Castello_to_Pescatore');
+% dirName = fullfile(samsungDir, 'Monte_Cappuccini_ascent');
+% dirName = fullfile(samsungDir, 'Monte_Cappuccini');
+% dirName = fullfile(samsungDir, 'Parco_del_Valentino_1');
+% dirName = fullfile(samsungDir, 'Parco_del_Valentino_2');
 
 % Xiaomi 11T Pro Tests
-% dirName    = fullfile(xiaomiDir, 'Piazza_Castello');
-% dirName    = fullfile(xiaomiDir, 'Tram_15_trip_Castello_to_Pescatore');
-% dirName    = fullfile(xiaomiDir, 'Monte_Cappuccini');
-% dirName    = fullfile(xiaomiDir, 'Parco_del_Valentino_walk');
-% dirName    = fullfile(xiaomiDir, 'Parco_del_Valentino_1');
-% dirName    = fullfile(xiaomiDir, 'Parco_del_Valentino_phone_call');
+% dirName  = fullfile(xiaomiDir, 'Piazza_Castello');
+% dirName  = fullfile(xiaomiDir, 'Tram_15_trip_Castello_to_Pescatore');
+% dirName  = fullfile(xiaomiDir, 'Monte_Cappuccini');
+% dirName  = fullfile(xiaomiDir, 'Parco_del_Valentino_walk');
+% dirName  = fullfile(xiaomiDir, 'Parco_del_Valentino_1');
+% dirName  = fullfile(xiaomiDir, 'Parco_del_Valentino_phone_call');
 
 %% true position
 param.llaTrueDegDegM = [];
@@ -64,13 +64,12 @@ spoof.position = [45.06361, 7.679483, 347.48];
 %% Plots
 plotAccDeltaRange = 0;
 plotPseudorangeRate = 1;
-%********************* END SETTINGS ***************************************
+%***************************** END SETTINGS *******************************
 
 %% Set the data filter and Read log file
 dataFilter = SetDataFilter;
 [gnssRaw,gnssAnalysis] = ReadGnssLogger(dirName,prFileName,dataFilter);
 if isempty(gnssRaw), return, end
-
 
 %% Get online ephemeris from Nasa CCDIS service, first compute UTC Time from gnssRaw:
 fctSeconds = 1e-3*double(gnssRaw.allRxMillis(end));
@@ -138,7 +137,7 @@ pause(0.01)
 end
 
 %% end of ProcessGnssMeasScript
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Copyright 2016 Google Inc.
 % 
 % Licensed under the Apache License, Version 2.0 (the "License");
