@@ -1,27 +1,47 @@
 % RUNDATASETANALYSIS.M
-% This script processes all datasets in the demoFiles directory. For each dataset, it retrieves
-% the first pseudorange log file, processes the GNSS measurements, and saves the resulting figures
-% to the output directory.
+% This script processes all tests for the specified datasets (Samsung_A51 and Xiaomi_11TPro).
+% It retrieves the pseudorange log files, processes the GNSS measurements, and saves the results.
 
-% Declare global variables and initialize project paths
+%% Initialize project paths and folder structure
 InitProject();     % Set up MATLAB paths and results folder
 p = PathManager(); % Retrieve project folder structure
 
-% Retrieve all subdirectories in the demoFiles directory
-dirs = dir(p.demo); % List all items in the demoFiles directory
-dirs = dirs([dirs.isdir] & ~startsWith({dirs.name},'.')); % Filter out non-directories and hidden items
+%% Define datasets and their corresponding tests
+datasets = {
+    'Samsung_A51',    {'Piazza_Castello', 'Tram_15_trip_Castello_to_Pescatore', ...
+                       'Monte_Cappuccini_ascent', 'Monte_Cappuccini', ...
+                       'Parco_del_Valentino_1', 'Parco_del_Valentino_2'};
+    'Xiaomi_11T_Pro', {'Piazza_Castello', 'Tram_15_trip_Castello_to_Pescatore', ...
+                       'Monte_Cappuccini', 'Parco_del_Valentino_walk', ...
+                       'Parco_del_Valentino_1', 'Parco_del_Valentino_phone_call'}
+};
 
-% Iterate through each dataset directory
-for i=1:numel(dirs)
-    ds = dirs(i).name;                     % Get the name of the dataset directory
-    dsPath = fullfile(p.demo, ds);         % Construct the full path to the dataset directory
-    files = dir(fullfile(dsPath,'*.txt')); % List all .txt files in the dataset directory
-    if isempty(files)                      % Check if no pseudorange log files are found
-        warning('No .txt in %s, skipping.', dsPath); % Display a warning and skip this dataset
-        continue; % Move to the next dataset
+%% Iterate through each dataset and its tests
+for d = 1:size(datasets, 1)
+    dataset = datasets{d, 1}; % Dataset name
+    tests = datasets{d, 2};   % List of tests for the dataset
+    
+    for t = 1:numel(tests)
+        test = tests{t}; % Current test name
+        
+        % Configure paths and filenames for the dataset and test
+        [dirName, pr, out] = GetDatasetConfig(dataset, test, p);
+        
+        % Configure spoofing parameters
+        spoof.active   = 0;  % Disable spoofing
+        spoof.delay    = 0;  % Set spoofing delay to 0 milliseconds
+        spoof.t_start  = 15; % Start spoofing at 15 seconds
+        spoof.position = [45.06361, 7.679483, 347.48]; % Define spoofed position
+        
+        % Enable ADR (Accumulated Delta Range) plotting
+        plotADR = 0; % Set to 1 to enable ADR plots
+        
+        % Process GNSS measurements with the specified parameters
+        figs = ProcessGnssMeasScript(dirName, pr, out, spoof, plotADR);
+        
+        % Save the generated figures to the output directory
+        format = 'both'; % Specify the format: 'png', 'fig', or 'both'
+        figNamePrefix = sprintf('%s_%s', dataset, test); % Base prefix: "dataset_test"
+        SaveFigures(figs, out, figNamePrefix, format);
     end
-    pr = files(1).name;                            % Select the first pseudorange log file
-    out = fullfile(p.results,'demo',ds);           % Define the output directory for results
-    figs = ProcessGnssMeasScript(dsPath, pr, out); % Process GNSS measurements for the dataset
-    SaveFigures(figs, out, ['demo_' ds]);          % Save the generated figures with a prefix
 end

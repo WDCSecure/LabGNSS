@@ -71,5 +71,5 @@ end
 figHandles = [figHandles, h8];
 
 % 8) Save all figures to outDir
-SaveFigures(figHandles, outDir, 'GNSS');
+% SaveFigures(figHandles, outDir, 'GNSS');
 end
