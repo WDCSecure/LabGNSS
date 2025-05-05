@@ -7,37 +7,28 @@ This directory provides all the resources and a complete MATLAB environment need
 - **MATLAB R2020a** or later (no additional toolboxes required).  
 - Internet access (optional) for NASA CCDIS ephemeris downloads.  
 - **GNSSLogger App** on Android (to generate new logs).  
-  
+
 ## Directory Structure
 
 ```
 Lab-Material/
 ├── configs/                              # Experiment configuration files
-│   └── spoof_configs/                    # .m scripts returning a spoof struct
-├── data/
-│   └── android_logs/                     # Place Android .txt logs here
+│   └── spoof_configs/                    # Spoofing configuration scripts
+├── data/                                 # GNSS log data
 ├── results/                              # Auto‑created output figures and data
-│   ├── demo/                             # Demo dataset outputs
-│   ├── android/                          # Android log outputs
-│   ├── spoof/                            # Spoofing test outputs
-│   └── custom/                           # Custom experiments
 ├── scripts/
-│   └── matlab/
-│       ├── core/                         # Reusable functions & initialization
-│       │   ├── InitProject.m
-│       │   ├── PathManager.m
-│       │   ├── SetDataFilter.m
-│       │   ├── SaveFigures.m
-│       │   └── utils/                    # Helpers (e.g. physconst.m)
-│       └── tasks/                        # Top‑level experiment scripts
-│           ├── RunDatasetAnalysis.m
-│           ├── RunAndroidLogAnalysis.m
-│           ├── RunDemo.m
-│           └── SpoofingTest.m
+│   ├── matlab/
+│   │   ├── core/                         # Core reusable functions
+│   │   ├── tasks/                        # Top‑level experiment scripts
+│   │   ├── utils/                        # Helper functions
+│   │   └── original/                     # Legacy scripts
+│   └── python/                           # Python scripts
 ├── tools/
-│   └── opensource/
-│       ├── library/                      # GNSS‑processing functions from NavSAS/Google
-│       └── demoFiles/                    # Provided demo datasets
+│   ├── opensource/                       # GNSS‑processing functions and datasets
+│   │   ├── library/                      # GNSS‑processing functions
+│   │   └── demoFiles/                    # Provided demo datasets
+│   └── gps-measurement-tools_NavSAS_students.zip
+├── resources/                            # Additional resources
 └── README.md                             # This file
 ```
 
@@ -45,21 +36,21 @@ Lab-Material/
 
 ### Core utilities (`scripts/matlab/core`)
 
-| File                 | Purpose                                               |
-|----------------------|-------------------------------------------------------|
-| `PathManager.m`      | Defines all project folder paths                      |
-| `InitProject.m`      | Adds paths, creates `results/`                        |
-| `SetDataFilter.m`    | Returns default GNSS data‑filter settings             |
-| `SaveFigures.m`      | Saves a list of figure handles to PNG files           |
-| `utils/physconst.m`  | Replacement for toolbox `physconst('lightspeed')`     |
+| File                       | Purpose                                               |
+|----------------------------|-------------------------------------------------------|
+| `PathManager.m`            | Defines all project folder paths                      |
+| `InitProject.m`            | Adds paths, creates `results/`                        |
+| `SetDataFilter.m`          | Returns default GNSS data‑filter settings             |
+| `SaveFigures.m`            | Saves a list of figure handles to PNG/FIG files       |
+| `ProcessGnssMeasScript.m`  | Core GNSS processing and plotting                     |
+| `FilterPositionOutliers.m` | Removes unrealistic position jumps                    |
 
 ### Experiment tasks (`scripts/matlab/tasks`)
 
 | Script                    | Function                                                              |
 |---------------------------|-----------------------------------------------------------------------|
-| `RunDatasetAnalysis.m`    | Process **all** subfolders of `tools/opensource/demoFiles/`           |
-| `RunAndroidLogAnalysis.m` | Process all `.txt` in `data/android_logs/`                            |
-| `RunDemo.m`               | Single demo run on `dataset_b` with optional spoofing & ADR           |
+| `RunDatasetAnalysis.m`    | Process all tests for Samsung A51 and Xiaomi 11T Pro datasets         |
+| `RunDemo.m`               | Single demo run with spoofing & ADR                                   |
 | `SpoofingTest.m`          | Iterate over all `configs/spoof_configs/*.m` and run spoof scenarios  |
 
 ### Configs (`configs/spoof_configs`)
@@ -73,20 +64,24 @@ cfg.t_start   % seconds into measurement to start spoof
 cfg.position  % [lat, lon, alt]
 ```
 
-Add new spoof scenarios by dropping a `.m` function here.
+| Config File              | Purpose                                               |
+|--------------------------|-------------------------------------------------------|
+| `spoof_default.m`        | Default configuration (no spoofing)                   |
+| `spoof_delay_test.m`     | Test spoofing with a delay                            |
+| `spoof_small_offset.m`   | Small spoofing offset (~100 m)                        |
 
 ### Tools (`tools/opensource/library` & `demoFiles`)
 
-- **library/**: GNSS‑processing functions (ReadGnssLogger, ProcessGnssMeas, Plot…, etc.).
-- **demoFiles/**: provided datasets (dataset_a, dataset_b, …) containing `.txt` logs, RINEX ephemeris, etc.
+- **library/**: GNSS‑processing functions (e.g., `ProcessGnssMeas`, `PlotPvt`, etc.).
+- **demoFiles/**: Provided datasets (e.g., `dataset_a`, `dataset_b`) containing `.txt` logs, RINEX ephemeris, etc.
 
 ## Data Formats
 
 - **Android logs**: GNSSLogger `.txt` pseudorange logs.  
   These logs contain raw GNSS measurements collected from Android devices.
-- **Demo datasets**: similar `.txt` logs plus RINEX navigation files (`hourXXXX.xx*`).  
+- **Demo datasets**: Similar `.txt` logs plus RINEX navigation files (`hourXXXX.xx*`).  
   RINEX files provide satellite ephemeris data required for precise positioning.
-- **Directory per dataset**: each dataset folder must contain at least one `.txt` file.  
+- **Directory per dataset**: Each dataset folder must contain at least one `.txt` file.  
   Ensure that all required files are placed in the correct directory structure for processing.
 
 ## How to Run
@@ -161,20 +156,8 @@ Project paths set. Results at .../Lab-Material/results
 >> RunDatasetAnalysis
 ```
 
-All demo subfolders under `tools/opensource/demoFiles/` with `.txt` logs will be processed.  
-The outputs will be saved in `results/demo/<dataset>/`.  
-Ensure that the demo datasets are correctly placed in the `demoFiles` directory before running this script.
-
-### Process your Android logs
-
-```
-% Copy your GNSSLogger .txt files into data/android_logs/
->> RunAndroidLogAnalysis
-```
-
-This script processes all `.txt` files in the `data/android_logs/` directory.  
-The outputs will be saved in `results/android/<logname>/`.  
-Make sure the `.txt` files are properly formatted and contain valid GNSS measurements.
+Processes all tests for Samsung A51 and Xiaomi 11T Pro datasets.  
+The outputs will be saved in `results/<device>/<test>/`.
 
 ### Single‑run demo with spoof/ADR
 
@@ -182,7 +165,7 @@ Make sure the `.txt` files are properly formatted and contain valid GNSS measure
 >> RunDemo
 ```
 
-This runs on `dataset_b` with the built‑in spoof & ADR settings. Modify `RunDemo.m` to change spoof or dataset.
+Runs a single demo with spoofing and ADR enabled. Modify `RunDemo.m` to change dataset or spoofing parameters.
 
 ### Spoofing parameter sweep
 
@@ -194,10 +177,10 @@ Executes every config in `configs/spoof_configs/` against the first Android log.
 
 ## Customizing
 
-- **Add new dataset**: place folder with `.txt` logs under `tools/opensource/demoFiles/` or `data/android_logs/`.
-- **Add new spoof config**: drop `myConfig.m` in `configs/spoof_configs` (function returns `cfg` struct).
-- **Adjust filters**: edit `SetDataFilter.m` in `core/`.
-- **Save additional outputs**: call `SaveFigures`, or extend `ProcessGnssMeasScript.m`.
+- **Add new dataset**: Place folder with `.txt` logs under `data/<device>/gnss_logs/`.
+- **Add new spoof config**: Drop `myConfig.m` in `configs/spoof_configs` (function returns `cfg` struct).
+- **Adjust filters**: Edit `SetDataFilter.m` in `core/`.
+- **Save additional outputs**: Call `SaveFigures`, or extend `ProcessGnssMeasScript.m`.
 
 ## Course Tasks Mapping
 
@@ -205,18 +188,12 @@ Executes every config in `configs/spoof_configs/` against the first Android log.
 |----------------------------------------------------------------------|-----------------------------------------------------------------------------------|
 | 1. Download & extract opensource library                             | _manual_                                                                          |
 | 2. Analyze raw & PVT on portal datasets; inspect plots; try filters  | `RunDatasetAnalysis.m`                                                            |
-| 3. Collect Android logs; analyze; compare open‑sky vs obstructed     | `RunAndroidLogAnalysis.m`                                                         |
+| 3. Collect Android logs; analyze; compare open‑sky vs obstructed     | `RunDatasetAnalysis.m`                                                            |
 | 4. Estimate true position; spoof small offset; observe effects       | `RunDemo.m`, `configs/spoof_configs/spoof_small_offset.m`                         |
 | 5. Try different spoof position; propose detection strategy          | Add new config in `configs/spoof_configs/` + `SpoofingTest.m`                     |
 | 6. Add spoof delay; study impact                                     | `configs/spoof_configs/spoof_delay_test.m` + `SpoofingTest.m`                     |
 | 7. (Optional) interference experiments                               | Create new task script under `tasks/`, e.g. `InterferenceTest.m`                  |
 | 8. Prepare lab report (discuss Tasks 3,5,6,7)                        | _manual_                                                                          |
-
-## Next Steps
-
-- Extend `core/utils` for new helper functions.
-- Add `CustomFilterTest.m` in `tasks/` to compare different SetDataFilter settings.
-- Automate report generation by exporting figures and tables to a LaTeX-friendly folder.
 
 ---
 
