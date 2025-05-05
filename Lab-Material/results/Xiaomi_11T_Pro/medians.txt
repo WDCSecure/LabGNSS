@@ -1,0 +1,8 @@
+| TEST                               | Median                         |
+| ---------------------------------- | ------------------------------ |
+| Piazza Castello                    | [45.0624767 7.6773903 574.02]  |
+| Tram_15_trip_Castello_to_Pescatore | [45.0616234 7.6884940 152.06]  |
+| Monte_Cappuccini                   | [45.0552563 7.6968612 -467.18] |
+| Parco_del_Valentino_walk           | [45.0581666 7.6906283 299.12]  |
+| Parco_del_Valentino_1              | [45.0330351 7.6755400 2032.97] |
+| Parco_del_Valentino_phone_call     | [45.0359761 7.6828318 2304.38] |
