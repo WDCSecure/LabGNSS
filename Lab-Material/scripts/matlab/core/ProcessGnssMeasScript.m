@@ -46,6 +46,10 @@ h3 = figure; PlotCno(gnssMeas, prFileName, colors);
 
 % 5) Compute and plot PVT
 gpsPvt = GpsWlsPvt(gnssMeas, eph, spoof);
+
+% Filter out unrealistic jumps
+gpsPvt = FilterPositionOutliers(gpsPvt, 30);  % 30 m/s threshold
+
 h4 = figure; PlotPvt(gpsPvt, prFileName, [], 'Raw Pseudoranges, Weighted Least Squares solution');
 h5 = figure; PlotPvtStates(gpsPvt, prFileName);
 

@@ -103,3 +103,21 @@ function dataFilter = SetDataFilter
     % WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
     % See the License for the specific language governing permissions and
     % limitations under the License.
+
+    %--- new quality filters ---
+
+    % 1) C/N0 > 25 dB‑Hz
+    dataFilter{end+1,1} = 'Cn0DbHz'; 
+    dataFilter{end,2}   = 'Cn0DbHz > 25';                
+
+    % 2) Pseudorange uncertainty < 5e7 ns (~50 m)
+    dataFilter{end+1,1} = 'PseudorangeUncertaintyNanos'; 
+    dataFilter{end,2}   = 'PseudorangeUncertaintyNanos < 5e7';  
+
+    % 3) Doppler‐rate uncertainty < 2 m/s
+    dataFilter{end+1,1} = 'PseudorangeRateUncertaintyMps'; 
+    dataFilter{end,2}   = 'PseudorangeRateUncertaintyMps < 2';     
+
+    % 4) Only valid carrier‑phase (no cycle slips)
+    dataFilter{end+1,1} = 'AccumulatedDeltaRangeState'; 
+    dataFilter{end,2}   = 'bitand(AccumulatedDeltaRangeState,1)'; 

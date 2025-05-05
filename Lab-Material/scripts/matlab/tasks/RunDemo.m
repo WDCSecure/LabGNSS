@@ -3,13 +3,15 @@
 % It initializes the project, sets up the demo dataset, configures spoofing parameters, and processes the GNSS
 % measurements. The results are saved as figures in the output directory.
 
+clc; close all; clear all;
+
 %% Initialize project paths and folder structure
 InitProject();     % Set up MATLAB paths and results folder
 p = PathManager(); % Retrieve project folder structure
 
 %% Define the dataset and test to run
 dataset = 'Samsung_A51';     % Options: 'dataset_b', 'Samsung_A51', 'Xiaomi_11T_Pro'
-test    = 'Tram_15_trip_Castello_to_Pescatore'; % Specific test for Samsung A51 or Xiaomi 11T Pro (ignored for dataset_b)
+test    = 'Monte_Cappuccini'; % Specific test for Samsung A51 or Xiaomi 11T Pro (ignored for dataset_b)
 
 %% Configure paths based on the selected dataset and test
 [dirName, pr, out] = GetDatasetConfig(dataset, test, p);

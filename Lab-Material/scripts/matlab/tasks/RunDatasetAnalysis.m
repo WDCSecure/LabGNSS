@@ -2,6 +2,8 @@
 % This script processes all tests for the specified datasets (Samsung_A51 and Xiaomi_11TPro).
 % It retrieves the pseudorange log files, processes the GNSS measurements, and saves the results.
 
+clc; close all; clear all;
+
 %% Initialize project paths and folder structure
 InitProject();     % Set up MATLAB paths and results folder
 p = PathManager(); % Retrieve project folder structure
