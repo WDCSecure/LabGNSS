@@ -9,7 +9,7 @@ p = PathManager(); % Retrieve project folder structure
 
 %% Define the dataset and test to run
 dataset = 'Samsung_A51';     % Options: 'dataset_b', 'Samsung_A51', 'Xiaomi_11T_Pro'
-test    = 'Monte_Cappuccini'; % Specific test for Samsung A51 or Xiaomi 11T Pro (ignored for dataset_b)
+test    = 'Tram_15_trip_Castello_to_Pescatore'; % Specific test for Samsung A51 or Xiaomi 11T Pro (ignored for dataset_b)
 
 %% Configure paths based on the selected dataset and test
 [dirName, pr, out] = GetDatasetConfig(dataset, test, p);
