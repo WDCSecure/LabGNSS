@@ -10,7 +10,19 @@
     % - Optional interference scenario
     % - Processing: filtering criteria and solver workflow
 
-    "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+    \subsection{Devices and Software}
+    We used a Samsung Galaxy A51 smartphone running Android 11 with GNSS Logger v3.1.0.4 to capture raw measurements. Data processing and analysis were performed in MATLAB R2024b using Google’s open-source \texttt{gps-measurement-tools} library.
     
-    "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?"
-    
+    \vspace{-0.2cm}
+
+    \subsection{Data Collection}
+    Two datasets were acquired on 3 May 2025 under cloudy conditions:
+    \begin{itemize}
+      \item \textbf{Static (Monte dei Cappuccini):} Device fixed by hand on a rooftop at latitude 45.059888°, longitude 7.697348°; logging ran from 10:35:20 for 5 minutes.
+      \item \textbf{Dynamic (Tram Route):} Handheld during a tram ride between start point 45.0707622°, 7.6850644° and end point 45.063912°, 7.696680°; logging ran from 10:00:21 for 5 minutes.
+    \end{itemize}
+
+    \vspace{-0.2cm}
+
+    \subsection{Processing Pipeline}
+    Raw GNSS logs were first filtered to exclude observations below a carrier-to-noise ratio of 25 dB‑Hz and satellite elevation below 15°. We extracted pseudorange and Doppler measurements per epoch, then computed a weighted least-squares (WLS) position solution. For spoof-input evaluation, the same static dataset was reprocessed by specifying a false reference location (\texttt{spoof.position}) and an artificial timing delay (\texttt{spoof.delay}), allowing comparison of the shifted navigation output against the baseline.
