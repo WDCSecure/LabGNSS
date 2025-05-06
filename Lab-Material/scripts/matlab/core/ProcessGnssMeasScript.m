@@ -47,6 +47,11 @@ h3 = figure; PlotCno(gnssMeas, prFileName, colors);
 % 5) Compute and plot PVT
 gpsPvt = GpsWlsPvt(gnssMeas, eph, spoof);
 
+% Save PVT results to a .mat file
+pvtFileName = fullfile(outDir, [prFileName(1:end-4) '_PVT.mat']);
+save(pvtFileName, 'gpsPvt');
+fprintf('PVT results saved to %s\n', pvtFileName);
+
 % Filter out unrealistic jumps
 % gpsPvt = FilterPositionOutliers(gpsPvt, 30);  % 30 m/s threshold
 
@@ -74,6 +79,4 @@ for epochIdx = 1:size(gpsPvt.allLlaDegDegM, 1)
 end
 figHandles = [figHandles, h8];
 
-% 8) Save all figures to outDir
-% SaveFigures(figHandles, outDir, 'GNSS');
 end

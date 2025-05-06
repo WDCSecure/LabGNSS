@@ -31,4 +31,4 @@ figs = ProcessGnssMeasScript(dirName, pr, out, spoof, plotADR); % Process GNSS d
 %% Save the generated figures to the output directory
 format = 'both'; % Specify the format: 'png', 'fig', or 'both'
 figNamePrefix = sprintf('%s_%s', dataset, test); % Base prefix: "dataset_test"
-SaveFigures(figs, out, figNamePrefix, format); % Save all figures with the specified format
+% SaveFigures(figs, out, figNamePrefix, format); % Save all figures with the specified format
