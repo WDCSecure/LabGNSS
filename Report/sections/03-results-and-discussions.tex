@@ -3,16 +3,40 @@
 % Section Title
 \section{RESULTS AND DISCUSSIONS} \label{sec:results}
 
-    % Main Content
 
-    "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
-    
-    "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?"
-    
+
     \subsection{Baseline Performance: Static vs.\ Dynamic}
     
         % Compare pseudorange trends, Doppler residuals, signal quality, geometry, and error statistics
         % Highlight numerical results (e.g., 95\% error radii, C/No means)
+
+
+        \subsection{Baseline Performance: Static vs.\ Dynamic}
+
+            \subsubsection{Static Case: Monte dei Cappuccini}
+            
+            In the Monte dei Cappuccini session, the raw pseudorange measurements (Fig.~\ref{fig:static-pseudorange}) form almost perfectly horizontal lines at around $2\times10^{7}$\,m. These steady tracks confirm that the receiver—and thus our antenna—remained fixed on the rooftop, with only minor step-changes when the receiver performed clock corrections or switched satellite channels.
+            
+            Likewise, when we compare the computed pseudorange rates against the receiver's built-in Doppler residuals (Fig.~\ref{fig:static-prr}), the two coincide to within a few centimetres per second for most satellites. This near-perfect overlap tells us that, in a truly static environment, our Doppler estimates are highly reliable and unpolluted by movement-induced biases.
+            
+            Our C/N$_0$ time series (Fig.~\ref{fig:static-cno}) shows an overall high signal strength—averaging above 45\,dB-Hz—but with occasional dips, for example when a pylon or nearby tree briefly shadowed SV\,27 around 50\,s. Even in what we call a “static” test, local multipath can nudge the carrier strength by a few dB.
+            
+            The weighted least-squares PVT solution (Fig.~\ref{fig:static-pvt}) clusters tightly around the true antenna position. The 68\%-confidence horizontal scatter is under 10\,m, HDOP remains below 1.5, and the computed speed sits at essentially zero—exactly what we expect with our rooftop setup. The clock-bias drift stays under 200\,$\mu$s over the entire 350\,s run, reflecting stable timing when nothing moves.
+            
+            Finally, the error-distribution plot (Fig.~\ref{fig:static-errorbox}) offers a complete picture of our static PVT accuracy. The box shows that half of all horizontal errors fall between approximately 4 m and 8 m, with the median line sitting right at about 6 m. The whiskers extend only as far as 10 m at the upper end and 2 m at the lower end, indicating very few extreme deviations. In other words, not only is our rooftop setup precise on average, but even the worst-case errors remain comfortably below 10 m.
+
+            \subsubsection{Dynamic Case: Tram Ride}
+            
+            During the tram experiment, the pseudorange traces (Fig.~\ref{fig:dynamic-pseudorange}) still center near $2\times10^{7}$\,m, but we see abrupt jumps when the vehicle speeds up. For instance, SV\,12 exhibits a one-metre step at 120\,s, coinciding with the trams acceleration out of a stop.
+            
+            The pseudorange-rate comparison (Fig.~\ref{fig:dynamic-prr}) now diverges from the receiver's own Doppler output by up to 0.5\,m/s on some channels. When the tram accelerates toward SV\,18, the Doppler residuals dip negative—exactly as physics predicts—and match GPS velocity readings that peak at around 20\,m/s (72 km/h), in line with the tram's timetable.
+            
+            Carrier-to-noise measurements (Fig.~\ref{fig:dynamic-cno}) reveal more volatility: C/N$_0$ often plunges below 30\,dB-Hz. These deep fades correlate with our onboard camera's view of narrow streets, underlining how urban multipath and NLOS conditions degrade signal quality in real transport scenarios.
+            
+            Despite these challenges, the WLS PVT solution (Fig.~\ref{fig:dynamic-pvt}) tracks the tram's path reasonably well. Our 68\% horizontal error circle expands to about 30\,m, and HDOP jumps up to 5 when only 5-6 satellites are in view. Yet the computed speed profile still mirrors the tram's acceleration and braking phases, confirming that even with urban impairments, our solver captures the true dynamics of a moving vehicle.
+            
+            The corresponding error-distribution plot for the tram ride (Fig.~\ref{fig:dynamic-errorbox}) reveals a markedly wider spread. Here, the median horizontal error rises to about 25 m, reflecting the challenges of urban multipath and partial NLOS conditions. The interquartile box stretches from roughly 15 m up to 35 m, showing that typical errors sit within this band. Meanwhile, the whiskers reach out to nearly 50 m during deep signal fades—such as when passing between tall buildings—and drop down to about 5 m in more open sections. This narrative illustrates both the typical accuracy we can expect on a moving tram and the occasional outliers that urban environments introduce.
+
 
         % content
 
