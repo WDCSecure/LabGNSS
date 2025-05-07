@@ -7,14 +7,8 @@
     % - Outline the scope: static (Monte Cappuccini), dynamic (Tram), spoofed-position and delay tests
     % - List high-level objectives (baseline performance, spoof input impact, delay effects)
 
-    Global Navigation Satellite Systems (GNSS) provide critical positioning services for a wide range of consumer and industrial applications. 
-    However, GNSS signals are inherently vulnerable to spoofing attacks, in which counterfeit signal parameters are supplied to the receiver, potentially leading to incorrect location or time estimates. 
-    Understanding how smartphone GNSS observables respond under legitimate and spoofed inputs is essential for developing reliable detection mechanisms.
-
-    This laboratory exercise captures raw GNSS measurements from an Android handset in two scenarios: a static rooftop deployment and a tram-based kinematic test. 
-    Each dataset is processed twice with a weighted least-squares estimator—once to establish baseline performance and again with an overridden reference location and controlled timing delays. 
-    By comparing these runs, we isolate the effects of satellite geometry, signal quality, and receiver clock behavior on output integrity.
-
+    Global Navigation Satellite Systems (GNSS) provide critical positioning services to a wide range of consumer and industrial applications. GNSS signals are however vulnerable to spoofing attacks, where artificial signal parameters are received at the receiver, which may result in false location or time estimates. It is valuable to understand the behavior of smartphone GNSS observables under legitimate and spoofed inputs to develop reliable detection methods. This lab exercise captures raw GNSS measurements from an Android smartphone under two scenarios: a rooftop static test and a kinematic trial on a tram. 
+    We run each dataset twice through a weighted least-squares estimator—once to deliver baseline performance and once with overridden reference location and controlled timing delays. In comparing the runs, we thereby isolate the effect of satellite geometry, signal quality, and receiver clock performance on output integrity.
     The remainder of this report is organized as follows. Section~\ref{sec:methods} describes the experimental setup, including device configuration, data collection procedures, and the processing pipeline. 
     Section~\ref{sec:results} presents results and discussion, contrasting static versus dynamic performance, examining spoofed-location impacts, and analyzing delay effects. 
-    Finally, Section~\ref{sec:conclusion} summarizes the key findings and outlines directions for future work.
+    Finally, Section~\ref{sec:conclusions} summarizes the key findings and outlines directions for future work.

@@ -12,10 +12,10 @@
 
     \subsection{Devices and Software}
     
-        For this lab, we used a Samsung Galaxy A51 running Android 11. 
-        GNSS Logger v3.1.0.4 was chosen due to its comprehensive access to raw GNSS measurements, compatibility with recent Android APIs, and ability to log detailed GNSS data suitable for precision analysis. 
-        MATLAB R2024b was employed for data processing because it integrates Google's GNSS toolbox, facilitating robust analysis and visualization of GNSS measurements and position solutions.
-
+    We used a Samsung Galaxy A51 with Android 11 for this experiment.
+    GNSS Logger v3.1.0.4 was chosen due to its unrestricted access to raw GNSS measurements, compatibility with newer Android APIs, and ability to record detailed GNSS data that is suitable for precise analysis.
+    MATLAB R2024b was employed to handle data because it comes with Google's GNSS toolbox, which accommodates robust analysis and visualization of GNSS measurements and position solutions.
+        
     \subsection{Data Collection Procedure}
     
         Two distinct 5-minute GNSS data logging sessions were conducted on 3 May 2025, under cloudy weather conditions, using the GNSS Logger app configured with the following settings enabled:
@@ -71,8 +71,8 @@
     
     \subsection{Spoofed-Input Configuration}
 
-        Spoofing scenarios were emulated by introducing artificial variations into the logged GNSS data through MATLAB processing. Specifically, false positions were configured by setting the parameter \texttt{spoof.position}, representing modified latitude, longitude, and altitude coordinates. Additionally, artificial timing delays were tested by adjusting the \texttt{spoof.delay} parameter, typically in the order of milliseconds, to simulate a delay in GNSS signal propagation. These configurations allowed evaluation of the impact of spoofing scenarios on position estimation accuracy and consistency.
+    Spoofing scenarios were emulated by introducing artificial variations to the recorded GNSS data through MATLAB processing. Specifically, mock positions were assigned by adjusting the parameter \texttt{spoof.position}, which represents modified latitude, longitude, and altitude coordinates. Additionally, artificial time delays were tested by adjusting the \texttt{spoof.delay} parameter, typically in milliseconds, to mimic delayed GNSS signal arrival. Such configurations facilitated evaluation of the impact of spoofing scenarios on position estimation reliability and accuracy.
 
     \subsection{Optional Interference Scenario}
-
-        An optional interference scenario was also considered, simulating conditions near potential interference sources, such as broadcasting antennas or high-density communication areas. GNSS data were collected in proximity to such interference sources, and subsequently processed using the same MATLAB workflow. Results were compared to nominal conditions to assess the impact of external interference on GNSS observables, including variations in pseudorange measurements, carrier-to-noise ratio, and overall positional accuracy.
+    
+    Even a worst-case interference situation was simulated, replicating conditions in the vicinity of potential interference sources such as broadcasting antennas or communication areas of high density. GNSS data were collected near such sources of interference, and then processed with the same MATLAB procedure. Nominal condition comparison was established to analyze the impact of external interference on GNSS observables such as variation in pseudorange measurements, carrier-to-noise ratio, and positional accuracy overall.
