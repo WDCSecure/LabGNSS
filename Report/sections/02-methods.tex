@@ -4,11 +4,11 @@
 \section{METHODS} \label{sec:methods}
 
     % In prose, describe the end-to-end procedure
-    % - Devices and software: handset model, app, toolbox
-    % - Data collection: where, how long, static vs. moving
+    % - Devices and software: handset model, app, toolbox X
+    % - Data collection: where, how long, static vs. moving X
     % - Spoofed-inputs: false position and delay parameters
     % - Optional interference scenario
-    % - Processing: filtering criteria and solver workflow
+    % - Processing: filtering criteria and solver workflow X
 
     \subsection{Devices and Software}
     
@@ -58,7 +58,7 @@
     \subsection{Processing Pipeline}
     
         The raw GNSS data from the GNSS Logger served as the input dataset for MATLAB. 
-        Processing involved a scripted workflow via \texttt{ProcessGnssMeasScript.m}, where the following steps were executed:
+        Processing involved a scripted workflow via \cooltext{ProcessGnssMeasScript.m}, where the following steps were executed:
         
         \begin{enumerate}
             \item \textbf{Filtering:} Data points with a carrier-to-noise ratio below 25 dB-Hz or satellite elevations below 15° were excluded to improve accuracy.
@@ -69,3 +69,10 @@
 
         Results from this processing pipeline provided insights into the differences in GNSS performance under static and dynamic conditions.
     
+    \subsection{Spoofed-Input Configuration}
+
+        Spoofing scenarios were emulated by introducing artificial variations into the logged GNSS data through MATLAB processing. Specifically, false positions were configured by setting the parameter \texttt{spoof.position}, representing modified latitude, longitude, and altitude coordinates. Additionally, artificial timing delays were tested by adjusting the \texttt{spoof.delay} parameter, typically in the order of milliseconds, to simulate a delay in GNSS signal propagation. These configurations allowed evaluation of the impact of spoofing scenarios on position estimation accuracy and consistency.
+
+    \subsection{Optional Interference Scenario}
+
+        An optional interference scenario was also considered, simulating conditions near potential interference sources, such as broadcasting antennas or high-density communication areas. GNSS data were collected in proximity to such interference sources, and subsequently processed using the same MATLAB workflow. Results were compared to nominal conditions to assess the impact of external interference on GNSS observables, including variations in pseudorange measurements, carrier-to-noise ratio, and overall positional accuracy.
