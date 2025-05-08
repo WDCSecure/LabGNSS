@@ -35,7 +35,7 @@ function [dirName, pr, out] = GetDatasetConfig(dataset, test, p)
                 case 'Aule_P'
                     pr = 'gnss_log_2025_05_07_12_56_15.txt';
                 case 'Aule_P_interference'
-                    pr = '.txt'; % TODO: Specify the correct file name
+                    pr = 'gnss_log_2025_05_08_12_56_13.txt';
                 otherwise
                     error('Unknown test for Samsung_A51: %s', test);
             end
