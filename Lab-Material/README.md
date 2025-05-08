@@ -12,24 +12,23 @@ This directory provides all the resources and a complete MATLAB environment need
 
 ```
 Lab-Material/
-├── configs/                              # Experiment configuration files
-│   └── spoof_configs/                    # Spoofing configuration scripts
-├── data/                                 # GNSS log data
-├── results/                              # Auto‑created output figures and data
+├── configs/             # Experiment configuration files
+│   └── spoof_configs/   # Spoofing configuration scripts
+├── data/                # GNSS log data
+├── results/             # Auto‑created output figures and data
 ├── scripts/
 │   ├── matlab/
-│   │   ├── core/                         # Core reusable functions
-│   │   ├── tasks/                        # Top‑level experiment scripts
-│   │   ├── utils/                        # Helper functions
-│   │   └── original/                     # Legacy scripts
-│   └── python/                           # Python scripts
+│   │   ├── core/        # Core reusable functions
+│   │   ├── tasks/       # Top‑level experiment scripts
+│   │   ├── utils/       # Helper functions
+│   │   └── original/    # Legacy scripts
+│   └── python/          # Python scripts
 ├── tools/
-│   ├── opensource/                       # GNSS‑processing functions and datasets
-│   │   ├── library/                      # GNSS‑processing functions
-│   │   └── demoFiles/                    # Provided demo datasets
-│   └── gps-measurement-tools_NavSAS_students.zip
-├── resources/                            # Additional resources
-└── README.md                             # This file
+│   └── opensource/      # GNSS‑processing functions and datasets
+│       ├── library/     # GNSS‑processing functions
+│       └── demoFiles/   # Provided demo datasets
+├── resources/           # Additional resources
+└── README.md            # This file
 ```
 
 ## File Roles

@@ -12,10 +12,10 @@ The GNSS lab focuses on processing raw GNSS measurements collected from Android 
 
 ```
 LabGNSS/
-├── Lab-Material/                        # MATLAB scripts, datasets, and configurations
-├── Report/                              # LaTeX source files for the lab report
-├── resources/                           # Additional resources (e.g., links, PDFs, images)
-└── README.md                            # This file
+├── Lab-Material/   # MATLAB scripts, datasets, and configurations
+├── Report/         # LaTeX source files for the lab report
+├── resources/      # Additional resources (e.g., links, PDFs, images)
+└── README.md       # This file
 ```
 
 > [!NOTE]
