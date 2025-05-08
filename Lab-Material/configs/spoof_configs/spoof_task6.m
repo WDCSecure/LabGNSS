@@ -9,9 +9,10 @@ cfg = spoof_default();
 cfg.active  = 1;
 
 % Set spoofing parameters
-cfg.delay   = 50;  % 50 milliseconds delay
-cfg.t_start = 0;   % Start spoofing immediately
+cfg.delay   = 1e-3;  % Delay of 1 ms
+cfg.t_start = 50;    % Start spoofing after 50 seconds
 
 % Use the same spoofed position as Task 5
-cfg.position = [45.059082994353986, 7.698906397795101, 256.77]; % Latitude, Longitude, Altitude
+% Piazza Vittorio Veneto, 10121 Torino TO, Italy
+cfg.position = [45.06477853118284, 7.695457675370255, 225.04]; % Latitude, Longitude, Altitude
 end
