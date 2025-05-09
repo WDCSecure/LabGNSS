@@ -11,16 +11,8 @@
         \vspace{0.5em}
         \textbf{Pseudoranges vs Time.} 
 
-        In the static data set recorded on the Monte dei Cappuccini terrace the individual
-        pseudorange traces are almost perfectly straight and parallel, with no gaps or sudden
-        level–shifts.  The only variation comes from the slow orbital motion of the satellites,
-        so every curve has a very gentle, almost identical slope
-        ($\approx$\,\SI{2}{\metre} over the whole 330 s window).
-        On board Tram 15, by contrast, every pseudorange contains the satellite movement
-        \emph{plus} the phone’s own translation. These step-like features
-        are typical of dynamic, partially-masked environments where the antenna periodically
-        loses and regains view of a satellite as it passes behind obstacles such as buildings,
-        catenaries, or the tram’s bodywork.
+        The pseudorange measurements reveal distinct trends across scenarios. In \textbf{Plot A}, \textbf{more satellites} (e.g., SVs 27, 4, 20, 5, 16, 28, 29, 18) are consistently tracked, exhibiting \textbf{flat trajectories} with minimal variation (range: $\sim$2.1--2.5$\times 10^7$ m). This suggests stable signal acquisition under favorable conditions. In contrast, \textbf{Plot B} displays \textbf{fewer visible satellites} (e.g., SVs 28, 29, 31, 12, 18), with several signals showing abrupt shifts or non-linear behavior (range: $\sim$2.0--2.6$\times 10^7$ m). The reduced satellite count in Plot B implies \textbf{challenging signal reception}, possibly due to environmental interference or motion-induced signal degradation.  
+
 
         \begin{figure}[h!]
             \centering
@@ -35,27 +27,13 @@
             \end{subfigure}
         \end{figure}
     
+
         \vspace{0.5em}
         \textbf{Pseudorange Change from Initial Value.} 
-        Expressing the measurements as a deviation from their epoch-0 value removes the common
-        clock term and highlights the pure range-rate behaviour.  For the stationary receiver the
-        change is almost perfectly linear; a best-fit slope gives range-rates of only a few
-        \si{mm/s}, in line with the projection of the satellite’s
-        ($\approx$\,\SI{3.9}{\kilo\metre\per\second}) velocity onto a fixed point on Earth.
-        The difference between the derivative of the raw pseudorange and the reported
-        pseudorange-rate (carrier Doppler observable) averages to
-        $\lvert\bar{\Delta}\rvert<\SI{0.15}{\metre\per\second}$ for all tracked vehicles,
-        confirming high internal consistency.\\[2pt]
-        During the tram ride the same plot shows visibly larger, sometimes opposite-sign slopes
-        that reach $\pm$\SI{3}{\metre\per\second}–\SI{4}{\metre\per\second}.
-        These extra terms are simply the projection of the vehicle’s motion on the corresponding
-        line-of-sight.  Because the receiver is accelerating, the straight-line assumption no
-        longer holds perfectly and the residual between the differentiated pseudorange and the
-        logged Doppler grows to $\approx$\SI{0.4}{\metre\per\second}–\SI{0.5}{\metre\per\second}
-        for several satellites.  Short gaps in the traces translate into offsets in the cumulative
-        curve, another indication of cycle slips or measurement drop-outs typical in a dynamic
-        urban corridor.
 
+        Deviations from initial values further highlight differences. In \textbf{Plot A}, all tracked satellites follow \textbf{shallow linear trends} ($\pm$0.5--2 m), reflecting predictable signal dynamics. The consistency across satellites (e.g., SVs 27, 28, 29) suggests robust tracking of both strong and weaker signals, including those from higher-elevation satellites. Conversely, \textbf{Plot B} shows \textbf{steeper slopes} (up to $\pm$3 m) and fragmented trends, with notable examples like SV 12 (sudden jump after $\sim$200 s) and SV 18 (continuous negative drift). The variability in Plot B indicates \textbf{intermittent signal loss or multipath effects}, particularly for satellites with marginal signal strength. 
+
+        
 
         \begin{figure}[H]
             \centering
@@ -72,23 +50,12 @@
     
         \vspace{0.5em}
         \textbf{Positioning and Speed.} 
-        The weighted-least-squares (WLS) solution for the static test forms a compact cloud
-        centred only \SI{8}{\metre} (50 \% circle) around its median, a respectable accuracy for
-        single-frequency raw-code positioning on a handset.  Horizontal speed never exceeds
-        \SI{0.3}{\metre\per\second} and the HDOP stays below~1.2 while 7–9 GPS satellites are
-        available, illustrating how good signal strength
-        (C/No mostly 35–45 \si{dB\hertz}) and favourable geometry translate directly into a stable
-        fix.\\[2pt]
-        In the dynamic scenario the position scatter stretches along a NE--SW line that coincides
-        with the real tram track.  Because the algorithm still assumes a static receiver, any
-        un-modelled motion is interpreted as additional error: horizontal offsets reach several
-        hundred metres and altitude shows a low-frequency bias.  The speed panel makes this
-        clear—true tram velocities of 6–\SI{10}{\metre\per\second} are recovered, but frequent
-        spikes up to \SI{20}{\metre\per\second} appear when the constellation drops to the legal
-        minimum of four satellites or when strong multipath corrupts one of the ranges.
-        HDOP occasionally climbs above~10 whenever a satellite is lost, amplifying the effect of
-        the raw measurement noise.
 
+        In the Fig. The top plots depict positional estimates. \textbf{Plot A} displays a tightly clustered distribution around its median $(45.059862^\circ, 7.697191^\circ)$, with a $50\%$ confidence ellipse spanning $\sim \pm 15$ m. This indicates stable positioning with minimal drift. In contrast, \textbf{Plot B} shows a widely scattered pattern centered at $(45.066832^\circ, 7.692336^\circ)$, featuring a $50\%$ ellipse extending $\sim \pm 400$ m. The median in Plot B lacks practical relevance due to extreme positional variability, unlike Plot A’s median, which accurately represents stationary behavior.  
+
+        The middle plots highlight horizontal speed trends. \textbf{Plot A} exhibits near-zero speeds ($<2$ m/s) with minor oscillations, consistent with negligible movement. Conversely, \textbf{Plot B} reveals erratic fluctuations, including a peak exceeding $20$ m/s. Speed is calculated as the rate of change between consecutive position estimates: $\Delta d / \Delta t$, where $\Delta d$ is the Euclidean distance between two points and $\Delta t$ is the elapsed time.  
+
+        The bottom plots compare HDOP and satellite visibility. \textbf{Plot A} maintains low HDOP ($<5$) with consistent visibility of 8–10 satellites, reflecting robust signal geometry. In contrast, \textbf{Plot B} shows elevated HDOP (up to $\sim 20$) alongside reduced satellite counts (4–6), indicating degraded tracking conditions. These disparities underscore differing signal quality, independent of motion assumptions.  
 
         \begin{figure}[h!]
             \centering
@@ -105,20 +72,14 @@
     
         \vspace{0.5em}
         \textbf{State Offsets and Timing Bias.} 
-        For both logs the receiver clock bias grows almost linearly
-        (about $2.4\times10^{4}$ \si{\metre}\,$\equiv$\,\SI{0.08}{\micro\second} over
-        330 s), reflecting the free-running quartz error that is later absorbed by the WLS
-        solution.  In static conditions the derived clock \emph{frequency} offset remains
-        remarkably flat at $0.80\pm0.01$ \si{ppm}.  Once the phone is moving, self-heating,
-        supply-voltage variation, and vibration induce a jitter five times larger; the
-        instantaneous frequency estimate drifts between 0.70 and \SI{0.85}{ppm}.\\[2pt]
-        Position-state residuals mirror the two use-cases: static latitude/longitude stay within
-        $\pm$\SI{10}{\metre} and the vertical channel—traditionally the weakest—within
-        $\pm$\SI{25}{\metre}.  When the tram starts, the solver sees continual geometry change;
-        latitude and longitude offsets swing by $\pm$\SI{400}{\metre} while altitude error grows
-        monotonically for several minutes before partially recovering.  Velocity states follow the
-        true motion but also inherit short bursts produced by outlying pseudoranges.
 
+        The top plots illustrate position state offsets relative to the median. In \textbf{Plot A}, deviations in latitude, longitude, and altitude remain tightly constrained within $\sim \pm 50$ m, with smooth, gradual fluctuations indicating stable signal tracking. In contrast, \textbf{Plot B} exhibits extreme offsets exceeding $\pm 500$ m, punctuated by abrupt spikes (e.g., a $\sim 600$ m jump near 150 seconds).  
+
+        The second plot shows clock bias (common bias) trends. Both plots exhibit linear growth, but \textbf{Plot A} starts at $0.1 \, \mu$s and increases steadily ($\sim 200$ ns over 350 seconds), reflecting predictable receiver clock drift. \textbf{Plot B} begins at $0.0 \, \mu$s but escalates more sharply ($\sim 250$ ns over the same interval), with a notable dip aligning with the positional spike in the top plot. This correlation implies transient disruptions affecting both position and timing stability in Plot B.  
+
+        Velocity state estimates (third plot) further differentiate the two scenarios. \textbf{Plot A} shows near-zero velocities (all components $\leq 2$ m/s), consistent with negligible movement. \textbf{Plot B}, however, displays pronounced oscillations, particularly in the northward direction (peaks $\sim \pm 20$ m/s), indicating rapid or inconsistent motion.  
+
+        The bottom plots depict common frequency offset trends. \textbf{Plot A} maintains a stable trajectory near $0.8$ ppm, with minor perturbations. \textbf{Plot B} shows greater variability, including a sharp downward deviation during the positional spike. This suggests that signal degradation or motion-induced errors propagate to both position and frequency estimates in Plot B, unlike the consistent behavior seen in Plot A.  
 
         \begin{figure}[h!]
             \centering
@@ -133,29 +94,9 @@
             \end{subfigure}
         \end{figure}
     
-    \bigskip
-    \noindent\textbf{Interpretation}\\
-    The side-by-side analysis emphasises how a smartphone-grade GNSS front-end, although perfectly
-    adequate for consumer navigation, is extremely sensitive to environment-induced dynamics when
-    operated in raw-measurement mode:
-    \begin{enumerate}
-      \item \emph{Signal quality and tracking robustness} degrade once the antenna is surrounded by
-            moving scatterers; this lowers C/No, increases the chance of cycle slips, and ultimately
-            reduces the number of simultaneous measurements available to the PVT filter.
-      \item \emph{Geometry} becomes a dominant error amplifier when only the minimum four satellites
-            are left; every metre of code noise converts into several metres of position error as
-            HDOP rises.
-      \item \emph{Clock-oscillator behaviour} that looks perfectly linear at rest exhibits noticeable
-            frequency wander when the handset experiences temperature cycling and mechanical stress.
-      \item Finally, feeding a static-receiver WLS model with data collected in motion introduces a
-            modelling mismatch that is clearly visible in the state-offset plots and should be
-            corrected by switching to a dynamic filter (e.g.\ Kalman) or by incorporating external
-            motion constraints.
-    \end{enumerate}
-
     \medskip
     \noindent
-    These findings highlight the importance of scenario-aware processing: identical hardware,
+    These measurements highlight the importance of scenario-aware processing: identical hardware,
     firmware, and atmospheric conditions can yield centimetre-per-second stability on a quiet
     terrace, yet the very same setup will produce hundred-metre excursions once placed on a moving
     tram through an urban canyon.
@@ -176,6 +117,8 @@
             \item \textbf{Dilution of precision (PDOP):} The satellite geometry quality curve is identical, indicating unchanged constellation geometry.
             \item \textbf{Pseudorange residuals:} The overall spread remains the same, but the entire residual distribution is offset by the constant delay corresponding to the spoofed displacement.
         \end{itemize}
+
+
 
         \begin{figure}[h!]
             \centering
