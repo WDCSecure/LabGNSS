@@ -4,136 +4,98 @@
 \section{RESULTS AND DISCUSSIONS} \label{sec:results}
 
     \subsection{Baseline Performance: Static vs.\ Dynamic}
+
+        Comparing the static and dynamic scenarios highlights key differences in GNSS signal behavior, measurement stability, and receiver performance. Although both datasets were collected under similar atmospheric conditions, the receiver's motion in the dynamic case introduced visible changes across all GNSS indicators.
     
-        \subsubsection{Static Case: Monte dei Cappuccini}
-        
-            \noindent The static scenario demonstrated stable GNSS performance. 
-            Pseudorange values remained consistent with expected GPS satellite distances (around $2\times10^7$ m). 
-            Position estimates clustered within an 8 m radius of the median, and horizontal speed remained near zero, confirming the device was stationary (Figure~\ref{fig:static_pos}). 
-            C/No values showed minor fluctuations (Figure~\ref{fig:static_cno}), with a few satellites (e.g., SV 27) experiencing temporary signal degradation. 
-            HDOP remained generally low, indicating good satellite geometry. 
-            Clock bias increased linearly over time (Figure~\ref{fig:static_wls}), suggesting typical thermal-induced drift.
-
-            \begin{figure}[h!]
-                \centering
-                \begin{subfigure}{0.23\textwidth}
-                    \centering
-                    \includegraphics[width=\textwidth]{images/Monte_Cappuccini/filtered/Samsung_A51_Monte_Cappuccini_fig4.png}
-                    \caption{Static scenario: Position estimates, horizontal speed, HDOP.}
-                    \label{fig:static_pos}
-                \end{subfigure}
-                \hfill
-                \begin{subfigure}{0.23\textwidth}
-                    \centering
-                    \includegraphics[width=\textwidth]{images/Monte_Cappuccini/filtered/Samsung_A51_Monte_Cappuccini_fig3.png}
-                    \caption{Static scenario: Carrier-to-noise ratio over time.}
-                    \label{fig:static_cno}
-                \end{subfigure}
-                \vspace{0.35cm}
-                \label{fig:gnss_comparison}
-            \end{figure}
-
-            \begin{figure}[h!]
-            \centering
-            \includegraphics[width=0.23\textwidth]{images/Monte_Cappuccini/filtered/Samsung_A51_Monte_Cappuccini_fig5.png}
-            \caption{Static scenario: WLS state offsets and clock bias trends.}
-            \label{fig:static_wls}
-            \end{figure}
-
-            \subsubsection{\noindent Dynamic Case: Tram Ride}
-        
-            \noindent The dynamic scenario exhibited greater measurement variability. 
-            Pseudoranges changed more rapidly (Figure~\ref{fig:dynamic_pr}), reflecting motion relative to the satellites. 
-            Position estimates were more dispersed, with northward velocity peaking near 20 m/s (Figure~\ref{fig:dynamic_pos}). 
-            C/No values fluctuated significantly due to urban obstructions (Figure~\ref{fig:dynamic_cno}), and some satellites showed weak or intermittent signals (e.g., SV 18). 
-            HDOP remained within acceptable bounds, although the number of tracked satellites varied. 
-            Clock bias again increased linearly but was more affected by motion-induced dynamics (Figure~\ref{fig:dynamic_wls}).
-
-            \begin{figure}[h!]
-                \centering
-                \begin{subfigure}{0.23\textwidth}
-                    \centering
-                    \includegraphics[width=\textwidth]{images/Tram_15_trip_Castello_to_Pescatore/filtered/Samsung_A51_Tram_15_trip_Castello_to_Pescatore_fig1.png}
-                    \caption{Dynamic scenario: Pseudoranges and variation over time.}
-                    \label{fig:dynamic_pr}
-                \end{subfigure}
-                \hfill
-                \begin{subfigure}{0.23\textwidth}
-                    \centering
-                    \includegraphics[width=\textwidth]{images/Tram_15_trip_Castello_to_Pescatore/filtered/Samsung_A51_Tram_15_trip_Castello_to_Pescatore_fig4.png}
-                    \caption{Dynamic scenario: Position estimates, speed, and HDOP.}
-                    \label{fig:dynamic_pos}
-                \end{subfigure}
-                \vspace{0.35cm}
-                \label{fig:gnss_comparison}
-            \end{figure}
-
-            \begin{figure}[h!]
+        \vspace{0.5em}
+        \textbf{Pseudoranges vs Time.} 
+        In the static case, pseudorange lines are mostly flat with occasional steps, reflecting steady satellite tracking and minimal receiver movement. In contrast, the dynamic case presents more pronounced variations, including jumps and slight trends, consistent with the receiver's motion on the Tram 15 route. SV 12 and SV 25 in particular show transient signal loss or handover events. These fluctuations reflect changes in satellite geometry and potential occlusions caused by urban structures.
+        \begin{figure}[h!]
             \centering
             \begin{subfigure}{0.23\textwidth}
-                \centering
-                \includegraphics[width=\textwidth]{images/Tram_15_trip_Castello_to_Pescatore/filtered/Samsung_A51_Tram_15_trip_Castello_to_Pescatore_fig3.png}
-                \caption{Dynamic scenario: Signal quality (C/No) per satellite.}
-                \label{fig:dynamic_cno}
+                \includegraphics[width=\textwidth]{images/Monte_Cappuccini/filtered/Samsung_A51_Monte_Cappuccini_fig1.png}
+                \caption{Static: Pseudoranges vs time}
             \end{subfigure}
             \hfill
             \begin{subfigure}{0.23\textwidth}
-                \centering
-                \includegraphics[width=\textwidth]{images/Tram_15_trip_Castello_to_Pescatore/filtered/Samsung_A51_Tram_15_trip_Castello_to_Pescatore_fig5.png}
-                \caption{Dynamic scenario: WLS offset and velocity states.}
-                \label{fig:dynamic_wls}
+                \includegraphics[width=\textwidth]{images/Tram_15_trip_Castello_to_Pescatore/filtered/Samsung_A51_Tram_15_trip_Castello_to_Pescatore_fig1.png}
+                \caption{Dynamic: Pseudoranges vs time}
             \end{subfigure}
-            \vspace{0.35cm}
-            \label{fig:gnss_comparison}
-            \end{figure}
-
-            \subsubsection{\noindent Comparison of Static and Dynamic Performance}
-        
-            \noindent Key differences emerged when comparing static and dynamic scenarios:
-            
-            \begin{itemize}
-                \item \textbf{Pseudorange Trends:} Static measurements showed flat and stable pseudorange lines with minor steps due to satellite handovers or clock corrections (Figure~\ref{fig:static_pr}). In contrast, dynamic measurements exhibited sloped lines, reflecting relative motion to satellites.
-                \item \textbf{Doppler Residuals:} In the static case, calculated and reported pseudorange rates aligned closely (Figure~\ref{fig:static_prr}). The dynamic case introduced more noise and discrepancies (Figure~\ref{fig:dynamic_prr}), reflecting movement complexity and potential modeling errors.
-                \item \textbf{Signal Quality (C/No):} The static case showed relatively stable C/No values, while the dynamic case had significant fluctuations and lower mean values due to urban interference and multipath effects.
-                \item \textbf{HDOP and Satellite Geometry:} HDOP remained low and stable in the static case, while it was slightly higher and more variable in the dynamic scenario due to changing satellite visibility.
-                \item \textbf{Error Statistics:} The static case achieved tighter clustering (\textasciitilde8 m radius), whereas the dynamic case showed larger offsets, especially in the latitude/longitude axes (up to \textasciitilde500 m).
-                \item \textbf{Velocity and Clock Behavior:} The dynamic case revealed dominant northward motion and larger variation in velocity states. Clock bias trends were similar in both scenarios but more affected by noise in the tram ride.
-            \end{itemize}
-            
-            \noindent These differences reflect the impact of movement, signal obstruction, and urban dynamics on GNSS performance, confirming that dynamic environments introduce more variability and require more robust estimation strategies.
-
-            \begin{figure}[h!]
-                \centering
-                \begin{subfigure}{0.23\textwidth}
-                    \centering
-                    \includegraphics[width=\textwidth]{images/Monte_Cappuccini/filtered/Samsung_A51_Monte_Cappuccini_fig1.png}
-                    \caption{Static scenario: Pseudoranges and variation over time.}
-                    \label{fig:static_pr}
-                \end{subfigure}
-                \hfill
-                \begin{subfigure}{0.23\textwidth}
-                    \centering
-                    \includegraphics[width=\textwidth]{images/Monte_Cappuccini/filtered/Samsung_A51_Monte_Cappuccini_fig2.png}
-                    \caption{Static scenario: Reported vs computed PRR.}
-                    \label{fig:static_prr}
-                \end{subfigure}
-                \vspace{0.35cm}
-                \label{fig:gnss_comparison}
-            \end{figure}
-
-            \begin{figure}[h!]
+        \end{figure}
+    
+        \vspace{0.5em}
+        \textbf{Pseudorange Change from Initial Value.} 
+        The static dataset showed modest drifts in pseudoranges, largely attributable to receiver clock drift. The dynamic scenario, however, featured distinct upward and downward trends for different satellites (e.g., SV 25 increasing, SV 18 decreasing), corresponding to the receiver's motion relative to each satellite. This behavior confirms continuous positional change and introduces measurement dynamics absent in the static case.
+    
+        \begin{figure}[H]
             \centering
-            \includegraphics[width=0.23\textwidth]{images/Tram_15_trip_Castello_to_Pescatore/filtered/Samsung_A51_Tram_15_trip_Castello_to_Pescatore_fig2.png}
-            \caption{Dynamic scenario: Reported vs computed PRR.}
-            \label{fig:dynamic_prr}
-            \end{figure}
-            
+            \begin{subfigure}{0.23\textwidth}
+                \includegraphics[width=\textwidth]{images/Monte_Cappuccini/filtered/Samsung_A51_Monte_Cappuccini_fig2.png}
+                \caption{Static: $\Delta$ Pseudorange}
+            \end{subfigure}
+            \hfill
+            \begin{subfigure}{0.23\textwidth}
+                \includegraphics[width=\textwidth]{images/Tram_15_trip_Castello_to_Pescatore/filtered/Samsung_A51_Tram_15_trip_Castello_to_Pescatore_fig2.png}
+                \caption{Dynamic: $\Delta$ Pseudorange}
+            \end{subfigure}
+        \end{figure}
+    
+        \vspace{0.5em}
+        \textbf{Positioning and Speed.} 
+        The position scatter in the static case remains tightly clustered, with near-zero horizontal speed, while the dynamic dataset exhibits a more dispersed cloud with higher velocity peaks (up to 20 m/s). These variations reflect real movement and acceleration events captured during Tram 15 trip from Piazza Castello to Piazza Vittorio Veneto. HDOP is comparably low in both scenarios, although it exhibits more fluctuation in the dynamic case, due to changing satellite visibility and geometry.
+    
+        \begin{figure}[h!]
+            \centering
+            \begin{subfigure}{0.23\textwidth}
+                \includegraphics[width=\textwidth]{images/Monte_Cappuccini/filtered/Samsung_A51_Monte_Cappuccini_fig4.png}
+                \caption{Static: Position, Speed, HDOP}
+            \end{subfigure}
+            \hfill
+            \begin{subfigure}{0.23\textwidth}
+                \includegraphics[width=\textwidth]{images/Tram_15_trip_Castello_to_Pescatore/filtered/Samsung_A51_Tram_15_trip_Castello_to_Pescatore_fig4.png}
+                \caption{Dynamic: Position, Speed, HDOP}
+            \end{subfigure}
+        \end{figure}
+    
+        \vspace{0.5em}
+        \textbf{State Offsets and Timing Bias.} 
+        The static clock bias grows linearly, indicating thermal-induced drift. The dynamic scenario shows similar behavior, but with slightly more noise in the frequency offset and position offsets due to motion and rapid changes in the Doppler environment. Despite this, both datasets show eventual stabilization, suggesting effective internal correction mechanisms.
+    
+        \begin{figure}[h!]
+            \centering
+            \begin{subfigure}{0.23\textwidth}
+                \includegraphics[width=\textwidth]{images/Monte_Cappuccini/filtered/Samsung_A51_Monte_Cappuccini_fig5.png}
+                \caption{Static: WLS states and bias}
+            \end{subfigure}
+            \hfill
+            \begin{subfigure}{0.23\textwidth}
+                \includegraphics[width=\textwidth]{images/Tram_15_trip_Castello_to_Pescatore/filtered/Samsung_A51_Tram_15_trip_Castello_to_Pescatore_fig5.png}
+                \caption{Dynamic: WLS states and bias}
+            \end{subfigure}
+        \end{figure}
+    
+        \vspace{0.5em}
+        \noindent
+        Overall, the dynamic dataset reveals the expected effects of motion on GNSS signals—greater variability, signal interruptions, and increased velocity states. In contrast, the static case offers a stable baseline, essential for identifying anomalies and for future spoofing detection tasks.
+
     \subsection{Impact of Spoofed Position}
         
         % Show how the solver output shifts when feeding a false coordinate
         % Note invariance of raw metrics and discuss detection implications
 
-        % content
+        In a spoofing attack, counterfeit signals are broadcast to mimic GNSS transmissions, often altering their timing, amplitude, or content. Typically, these deceptive signals are sent at higher power than the originals to mislead navigation systems. In our experiment, however, spoofing was implemented purely in software by adjusting the perceived reception time inside the professor’s script to simulate spoofing behavior.
+            
+        For the spoofed test we manually injected the coordinates of Piazza Vittorio Veneto (45.064749246294085, 7.6954660899754215) — a location adjacent to our true survey point — directly into the processing script. As shown in the “Spoofed Case” plots (see attached PDF), this causes the solver to converge exactly at the Piazza Vittorio Veneto coordinates rather than the true measurement site, introducing a horizontal displacement of several hundred metres.
+        
+        Despite this spatial shift, all raw observables remain essentially unchanged relative to the normal run:
+        \begin{itemize}
+          \item \textbf{Carrier-to-noise density (C/N):} Histograms and time-series trace exactly overlap those of the baseline, confirming no change in received signal strength.
+          \item \textbf{Dilution of precision (PDOP):} The satellite geometry quality curve is identical, indicating unchanged constellation geometry.
+          \item \textbf{Pseudorange residuals:} The overall spread remains the same, but the entire residual distribution is offset by the constant delay corresponding to the spoofed displacement.
+        \end{itemize}
+        
+        \noindent
+        Additionally, the 50\% (interquartile) range in the median-error distribution shrinks from approximately 8 m in the genuine case to about 4.7 m under spoofing. This reduction occurs because the solver consistently “locks” onto the spoofed coordinate, decreasing variability around that false point.
 
     \subsection{Effects of Timing Delays}
     
