@@ -109,12 +109,12 @@
         \begin{figure}[h!]
             \centering
             \begin{subfigure}{0.23\textwidth}
-                \includegraphics[width=\textwidth]{images/tests/Monte_Cappuccini/Spoofing/Samsung_A51_Monte_Cappuccini_fig1.png}
+                \includegraphics[width=\textwidth]{images/tests/Monte_Cappuccini/Spoofing/task5_figures/Samsung_A51_Monte_Cappuccini_fig1.png}
                 \caption{}
             \end{subfigure}
             \hfill
             \begin{subfigure}{0.23\textwidth}
-                \includegraphics[width=\textwidth]{images/tests/Monte_Cappuccini/Spoofing/Samsung_A51_Monte_Cappuccini_fig4.png}
+                \includegraphics[width=\textwidth]{images/tests/Monte_Cappuccini/Spoofing/task5_figures/Samsung_A51_Monte_Cappuccini_fig4.png}
                 \caption{}
             \end{subfigure}
         \end{figure}
@@ -122,7 +122,7 @@
 
         \begin{figure}[h!]
             \centering
-            \includegraphics[width=0.9\columnwidth]{images/tests/Monte_Cappuccini/Spoofing/Samsung_A51_Monte_Cappuccini_fig5.png}
+            \includegraphics[width=0.9\columnwidth]{images/tests/Monte_Cappuccini/Spoofing/task5_figures/Samsung_A51_Monte_Cappuccini_fig5.png}
             \caption{}
         \end{figure}
 
@@ -140,14 +140,41 @@ cfg.delay   = 1e-3;
 cfg.t_start = 50;
         \end{verbatim}
 
+
+        \begin{figure}[h!]
+            \centering
+            \begin{subfigure}{0.23\textwidth}
+                \includegraphics[width=\textwidth]{images/tests/Monte_Cappuccini/Spoofing/task6_figures/Samsung_A51_Monte_Cappuccini_fig1.png}
+                \caption{}
+            \end{subfigure}
+            \hfill
+            \begin{subfigure}{0.23\textwidth}
+                \includegraphics[width=\textwidth]{images/tests/Monte_Cappuccini/Spoofing/task6_figures/Samsung_A51_Monte_Cappuccini_fig4.png}
+                \caption{}
+            \end{subfigure}
+        \end{figure}
+
+                \begin{figure}[h!]
+            \centering
+            \begin{subfigure}{0.23\textwidth}
+                \includegraphics[width=\textwidth]{images/tests/Monte_Cappuccini/Spoofing/task6_figures/Samsung_A51_Monte_Cappuccini_fig5.png}
+                \caption{}
+            \end{subfigure}
+            \hfill
+            \begin{subfigure}{0.23\textwidth}
+                \includegraphics[width=\textwidth]{images/tests/Monte_Cappuccini/Spoofing/task6_figures/Samsung_A51_Monte_Cappuccini_fig6.png}
+                \caption{}
+            \end{subfigure}
+        \end{figure}
+
         \noindent As visible in the plots, all observables remain nominal until t=50 s, at which point the solver's estimated position and receiver clock-bias exhibit a clear discontinuity as the spoof takes effect.
 
         \begin{itemize}
             \item \textbf{Position solution:} Prior to 50 s, the estimated coordinate coincides with the true static point. Immediately after 50 s, the solution jumps to the spoofed Piazza Vittorio Veneto location, replicating the static-spoof offset of several hundred metres.  
-            \item \textbf{Receiver clock-bias:} A sudden step of appears in the estimated receiver clock-bias track (Plot 11), directly corresponding to the 1 ms replay delay needed to shift the range solution by the planar offset.  
-            \item \textbf{Carrier-to-noise density (C/N):} The C/N time-series (Plot 9) shows no amplitude change at t=50 s—signal strength is unaffected by delay.  
-            \item \textbf{Dilution of precision (PDOP):} Satellite geometry quality (Plot 10) remains continuous and invariant through the spoof onset.  
-            \item \textbf{Pseudorange residuals:} Residuals (Plot 12) maintain the same spread, but their mean shifts abruptly at 50 s by the additional delay delta t.  
+            \item \textbf{Receiver clock-bias:} A sudden step of appears in the estimated receiver clock-bias track, directly corresponding to the 1 ms replay delay needed to shift the range solution by the planar offset.  
+            \item \textbf{Carrier-to-noise density (C/N):} The C/N time-series shows no amplitude change at t=50 s—signal strength is unaffected by delay.  
+            \item \textbf{Dilution of precision (PDOP):} Satellite geometry quality remains continuous and invariant through the spoof onset.  
+            \item \textbf{Pseudorange residuals:} Residuals maintain the same spread, but their mean shifts abruptly at 50 s by the additional delay delta t.  
         \end{itemize}
         
         \noindent From a solver-stability perspective, the sudden time bias causes an immediate step in both position and clock-bias, sometimes triggering a brief convergence glitch (extra iterations or loss of fix) as the estimator re-optimizes. 
