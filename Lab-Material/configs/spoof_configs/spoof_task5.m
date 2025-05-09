@@ -14,7 +14,8 @@ cfg.delay   = 0;  % No delay
 cfg.t_start = 0;  % Start spoofing immediately
 
 % Define an arbitrary spoofed position (e.g., from Google Maps)
-cfg.position = [45.059082994353986, 7.698906397795101, 256.77]; % Latitude, Longitude, Altitude
+% Piazza Vittorio Veneto, 10121 Torino TO, Italy
+cfg.position = [45.06477853118284, 7.695457675370255, 225.04]; % Latitude, Longitude, Altitude
 end
 
 % https://maps.app.goo.gl/V2BUWx1ssyZUf8Hu8
