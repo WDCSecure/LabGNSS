@@ -3,12 +3,6 @@
 % Section Title
 \section{CONCLUSIONS} \label{sec:conclusions}
 
-    This work analyzed GNSS performance on a commercial smartphone under static, dynamic, and spoofed conditions using raw measurements and post-processing in MATLAB. 
-    In the static scenario, the device exhibited stable position estimates, low clock drift, and minimal variation in pseudorange and speed. 
-    The dynamic scenario, by contrast, showed increased noise in position, pseudorange rates, and clock bias—expected consequences of motion and satellite geometry changes.
-
-    \noindent The spoofing tests revealed that even simple, software-level injection of false coordinates can cause the GNSS solver to converge on a consistent but incorrect location, with little to no impact on first-order signal metrics like carrier-to-noise ratio or HDOP. 
-    This highlights a critical vulnerability: smartphone GNSS receivers can be misled without exhibiting obvious degradations in signal quality.
-
-    \noindent Future extensions could include testing across multiple smartphones, introducing real-time spoofing detection mechanisms, and leveraging inertial or multi-constellation data for cross-validation. 
-    These steps would further explore the boundaries of GNSS resilience and help guide the development of more robust location-aware systems.
+    This research compared GNSS performance on a commercial smart-phone under static, dynamic, and spoofed scenarios based on raw measurements and post-processing in MATLAB. Under the static scenario, the device had consistent position estimates, low clock drift, and negligible variation in pseudorange and speed. The dynamic scenario, on the other hand, demonstrated higher noise in position, pseudor-range rates, and clock bias—predictable effects of motion and satellite geometry variations.
+    The spoofing tests indicated that even basic, software-level injec-arise in the form of taking on false coordinates by the GNSS solver, as it settles on a consistent but incorrect position with little or no impact on first-order signal measurements like carrier-to-noise ratio or HDOP. This highlights a significant vulnerability: smartphone GNSS receivers can be fooled without revealing obvious degradations in signal quality. Some of these potential future extensions are experiments across devices, 
+    applying real-time mechanisms to identify spoofing, and using inertial or multi-constellation data for verification. These steps would push the boundaries of GNSS robustness and help in the development of more robust location-aware systems.
