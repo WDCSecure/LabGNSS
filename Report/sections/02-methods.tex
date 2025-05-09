@@ -36,23 +36,23 @@
         \end{itemize}
 
         \begin{figure}[h!]
-          \centering
-          \begin{subfigure}{0.23\textwidth}
-              \centering
-              \includegraphics[width=\textwidth]{images/Monte_Cappuccini/filtered/Samsung_A51_Monte_Cappuccini_fig6.png}
-              \caption{Monte dei Cappuccini.}
-              \label{fig:static_scenario}
-          \end{subfigure}
-          \hfill
-          \begin{subfigure}{0.23\textwidth}
-              \centering
-              \includegraphics[width=\textwidth]{images/Tram_15_trip_Castello_to_Pescatore/filtered/Samsung_A51_Tram_15_trip_Castello_to_Pescatore_fig6.png}
-              \caption{Tram Line 15.}
-              \label{fig:dynamic_scenario}
-          \end{subfigure}
-          \vspace{0.35cm}
-          \caption{Comparison of GNSS data: (a) Static scenario at Monte dei Cappuccini,(b) dynamic scenario along Tram Line 15.}
-          \label{fig:gnss_comparison}
+            \centering
+            \begin{subfigure}{0.23\textwidth}
+                \centering
+                \includegraphics[width=\textwidth]{images/tests/Monte_Cappuccini/png/Samsung_A51_Monte_Cappuccini_fig6.png}
+                \caption{Monte dei Cappuccini.}
+                \label{fig:static_scenario}
+            \end{subfigure}
+            \hfill
+            \begin{subfigure}{0.23\textwidth}
+                \centering
+                \includegraphics[width=\textwidth]{images/tests/Tram_15_trip_Castello_to_Pescatore/png/Samsung_A51_Tram_15_trip_Castello_to_Pescatore_fig6.png}
+                \caption{Tram Line 15.}
+                \label{fig:dynamic_scenario}
+            \end{subfigure}
+            \vspace{0.35cm}
+            \caption{Comparison of GNSS data: (a) Static scenario at Monte dei Cappuccini,(b) dynamic scenario along Tram Line 15.}
+            \label{fig:gnss_comparison}
         \end{figure}
 
     \subsection{Processing Pipeline}
@@ -76,7 +76,7 @@
         Additionally, artificial time delays were tested by adjusting the \cooltext{spoof.delay} parameter, typically in milliseconds, to mimic delayed GNSS signal arrival. 
         Such configurations facilitated evaluation of the impact of spoofing scenarios on position estimation reliability and accuracy.
 
-    \subsection{Optional Interference Scenario}
+    \subsection{Interference Scenario}
     
         Even a worst-case interference situation was simulated, replicating conditions in the vicinity of potential interference sources such as broadcasting antennas or communication areas of high density. 
         GNSS data were collected near such sources of interference, and then processed with the same MATLAB procedure. 

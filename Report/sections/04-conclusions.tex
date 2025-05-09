@@ -7,8 +7,12 @@
     % - Reflect on what the experiments reveal about smartphone GNSS vulnerability
     % - Note limitations and suggest future extensions (e.g., multi-device, real-time checks)
 
-    This work analyzed GNSS performance on a commercial smartphone under static, dynamic, and spoofed conditions using raw measurements and post-processing in MATLAB. In the static scenario, the device exhibited stable position estimates, low clock drift, and minimal variation in pseudorange and speed. The dynamic scenario, by contrast, showed increased noise in position, pseudorange rates, and clock bias—expected consequences of motion and satellite geometry changes.
+    This work analyzed GNSS performance on a commercial smartphone under static, dynamic, and spoofed conditions using raw measurements and post-processing in MATLAB. 
+    In the static scenario, the device exhibited stable position estimates, low clock drift, and minimal variation in pseudorange and speed. 
+    The dynamic scenario, by contrast, showed increased noise in position, pseudorange rates, and clock bias—expected consequences of motion and satellite geometry changes.
 
-    The spoofing tests revealed that even simple, software-level injection of false coordinates can cause the GNSS solver to converge on a consistent but incorrect location, with little to no impact on first-order signal metrics like carrier-to-noise ratio or HDOP. This highlights a critical vulnerability: smartphone GNSS receivers can be misled without exhibiting obvious degradations in signal quality.
+    \noindent The spoofing tests revealed that even simple, software-level injection of false coordinates can cause the GNSS solver to converge on a consistent but incorrect location, with little to no impact on first-order signal metrics like carrier-to-noise ratio or HDOP. 
+    This highlights a critical vulnerability: smartphone GNSS receivers can be misled without exhibiting obvious degradations in signal quality.
 
-    Future extensions could include testing across multiple smartphones, introducing real-time spoofing detection mechanisms, and leveraging inertial or multi-constellation data for cross-validation. These steps would further explore the boundaries of GNSS resilience and help guide the development of more robust location-aware systems.
+    \noindent Future extensions could include testing across multiple smartphones, introducing real-time spoofing detection mechanisms, and leveraging inertial or multi-constellation data for cross-validation. 
+    These steps would further explore the boundaries of GNSS resilience and help guide the development of more robust location-aware systems.
