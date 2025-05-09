@@ -105,6 +105,27 @@
             \item \textbf{Dilution of precision (PDOP):} The satellite geometry quality curve is identical, indicating unchanged constellation geometry.
             \item \textbf{Pseudorange residuals:} The overall spread remains the same, but the entire residual distribution is offset by the constant delay corresponding to the spoofed displacement.
         \end{itemize}
+
+        \begin{figure}[h!]
+            \centering
+            \begin{subfigure}{0.23\textwidth}
+                \includegraphics[width=\textwidth]{images/tests/Monte_Cappuccini/Spoofing/Samsung_A51_Monte_Cappuccini_fig1.png}
+                \caption{}
+            \end{subfigure}
+            \hfill
+            \begin{subfigure}{0.23\textwidth}
+                \includegraphics[width=\textwidth]{images/tests/Monte_Cappuccini/Spoofing/Samsung_A51_Monte_Cappuccini_fig4.png}
+                \caption{}
+            \end{subfigure}
+        \end{figure}
+
+
+        \begin{figure}[h!]
+            \centering
+            \includegraphics[width=0.9\columnwidth]{images/tests/Monte_Cappuccini/Spoofing/Samsung_A51_Monte_Cappuccini_fig5.png}
+            \caption{}
+        \end{figure}
+
         
         \noindent Additionally, the 50\% (interquartile) range in the median-error distribution shrinks from approximately 8 m in the genuine case to about 4.7 m under spoofing. 
         This reduction occurs because the solver consistently “locks” onto the spoofed coordinate, decreasing variability around that false point.
