@@ -207,6 +207,14 @@
 \setlength{\footskip}{30pt}
 \setlength{\abovecaptionskip}{5pt plus 3pt minus 2pt} 
 
+% Remove indentation \subsubsection
+\makeatletter
+\renewcommand\subsubsection{\@startsection{subsubsection}{3}{0pt}%
+  {2ex \@plus1ex \@minus .2ex}            % Space above
+  {1ex \@plus .2ex}                       % Space below
+  {\normalfont\normalsize\itshape}}       % Italic style
+\makeatother
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %                               Begin Document                               %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
