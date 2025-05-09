@@ -10,11 +10,18 @@
     
         \vspace{0.5em}
         \textbf{Pseudoranges vs Time.} 
-        In the static case, pseudorange lines are mostly flat with occasional steps, reflecting steady satellite tracking and minimal receiver movement. 
-        In contrast, the dynamic case presents more pronounced variations, including jumps and slight trends, consistent with the receiver's motion on the Tram 15 route. 
-        SV 12 and SV 25 in particular show transient signal loss or handover events. 
-        These fluctuations reflect changes in satellite geometry and potential occlusions caused by urban structures.
-        
+
+        In the static data set recorded on the Monte dei Cappuccini terrace the individual
+        pseudorange traces are almost perfectly straight and parallel, with no gaps or sudden
+        level–shifts.  The only variation comes from the slow orbital motion of the satellites,
+        so every curve has a very gentle, almost identical slope
+        ($\approx$\,\SI{2}{\metre} over the whole 330 s window).
+        On board Tram 15, by contrast, every pseudorange contains the satellite movement
+        \emph{plus} the phone’s own translation. These step-like features
+        are typical of dynamic, partially-masked environments where the antenna periodically
+        loses and regains view of a satellite as it passes behind obstacles such as buildings,
+        catenaries, or the tram’s bodywork.
+
         \begin{figure}[h!]
             \centering
             \begin{subfigure}{0.23\textwidth}
@@ -30,10 +37,26 @@
     
         \vspace{0.5em}
         \textbf{Pseudorange Change from Initial Value.} 
-        The static dataset showed modest drifts in pseudoranges, largely attributable to receiver clock drift. 
-        The dynamic scenario, however, featured distinct upward and downward trends for different satellites (e.g., SV 25 increasing, SV 18 decreasing), corresponding to the receiver's motion relative to each satellite. 
-        This behavior confirms continuous positional change and introduces measurement dynamics absent in the static case.
-    
+        Expressing the measurements as a deviation from their epoch-0 value removes the common
+        clock term and highlights the pure range-rate behaviour.  For the stationary receiver the
+        change is almost perfectly linear; a best-fit slope gives range-rates of only a few
+        \si{mm/s}, in line with the projection of the satellite’s
+        ($\approx$\,\SI{3.9}{\kilo\metre\per\second}) velocity onto a fixed point on Earth.
+        The difference between the derivative of the raw pseudorange and the reported
+        pseudorange-rate (carrier Doppler observable) averages to
+        $\lvert\bar{\Delta}\rvert<\SI{0.15}{\metre\per\second}$ for all tracked vehicles,
+        confirming high internal consistency.\\[2pt]
+        During the tram ride the same plot shows visibly larger, sometimes opposite-sign slopes
+        that reach $\pm$\SI{3}{\metre\per\second}–\SI{4}{\metre\per\second}.
+        These extra terms are simply the projection of the vehicle’s motion on the corresponding
+        line-of-sight.  Because the receiver is accelerating, the straight-line assumption no
+        longer holds perfectly and the residual between the differentiated pseudorange and the
+        logged Doppler grows to $\approx$\SI{0.4}{\metre\per\second}–\SI{0.5}{\metre\per\second}
+        for several satellites.  Short gaps in the traces translate into offsets in the cumulative
+        curve, another indication of cycle slips or measurement drop-outs typical in a dynamic
+        urban corridor.
+
+
         \begin{figure}[H]
             \centering
             \begin{subfigure}{0.23\textwidth}
@@ -49,10 +72,24 @@
     
         \vspace{0.5em}
         \textbf{Positioning and Speed.} 
-        The position scatter in the static case remains tightly clustered, with near-zero horizontal speed, while the dynamic dataset exhibits a more dispersed cloud with higher velocity peaks (up to 20 m/s). 
-        These variations reflect real movement and acceleration events captured during Tram 15 trip from Piazza Castello to Piazza Vittorio Veneto. 
-        HDOP is comparably low in both scenarios, although it exhibits more fluctuation in the dynamic case, due to changing satellite visibility and geometry.
-    
+        The weighted-least-squares (WLS) solution for the static test forms a compact cloud
+        centred only \SI{8}{\metre} (50 \% circle) around its median, a respectable accuracy for
+        single-frequency raw-code positioning on a handset.  Horizontal speed never exceeds
+        \SI{0.3}{\metre\per\second} and the HDOP stays below~1.2 while 7–9 GPS satellites are
+        available, illustrating how good signal strength
+        (C/No mostly 35–45 \si{dB\hertz}) and favourable geometry translate directly into a stable
+        fix.\\[2pt]
+        In the dynamic scenario the position scatter stretches along a NE--SW line that coincides
+        with the real tram track.  Because the algorithm still assumes a static receiver, any
+        un-modelled motion is interpreted as additional error: horizontal offsets reach several
+        hundred metres and altitude shows a low-frequency bias.  The speed panel makes this
+        clear—true tram velocities of 6–\SI{10}{\metre\per\second} are recovered, but frequent
+        spikes up to \SI{20}{\metre\per\second} appear when the constellation drops to the legal
+        minimum of four satellites or when strong multipath corrupts one of the ranges.
+        HDOP occasionally climbs above~10 whenever a satellite is lost, amplifying the effect of
+        the raw measurement noise.
+
+
         \begin{figure}[h!]
             \centering
             \begin{subfigure}{0.23\textwidth}
@@ -68,10 +105,21 @@
     
         \vspace{0.5em}
         \textbf{State Offsets and Timing Bias.} 
-        The static clock bias grows linearly, indicating thermal-induced drift. 
-        The dynamic scenario shows similar behavior, but with slightly more noise in the frequency offset and position offsets due to motion and rapid changes in the Doppler environment. 
-        Despite this, both datasets show eventual stabilization, suggesting effective internal correction mechanisms.
-    
+        For both logs the receiver clock bias grows almost linearly
+        (about $2.4\times10^{4}$ \si{\metre}\,$\equiv$\,\SI{0.08}{\micro\second} over
+        330 s), reflecting the free-running quartz error that is later absorbed by the WLS
+        solution.  In static conditions the derived clock \emph{frequency} offset remains
+        remarkably flat at $0.80\pm0.01$ \si{ppm}.  Once the phone is moving, self-heating,
+        supply-voltage variation, and vibration induce a jitter five times larger; the
+        instantaneous frequency estimate drifts between 0.70 and \SI{0.85}{ppm}.\\[2pt]
+        Position-state residuals mirror the two use-cases: static latitude/longitude stay within
+        $\pm$\SI{10}{\metre} and the vertical channel—traditionally the weakest—within
+        $\pm$\SI{25}{\metre}.  When the tram starts, the solver sees continual geometry change;
+        latitude and longitude offsets swing by $\pm$\SI{400}{\metre} while altitude error grows
+        monotonically for several minutes before partially recovering.  Velocity states follow the
+        true motion but also inherit short bursts produced by outlying pseudoranges.
+
+
         \begin{figure}[h!]
             \centering
             \begin{subfigure}{0.23\textwidth}
@@ -85,9 +133,32 @@
             \end{subfigure}
         \end{figure}
     
-        \vspace{0.5em}
-        \noindent Overall, the dynamic dataset reveals the expected effects of motion on GNSS signals—greater variability, signal interruptions, and increased velocity states. 
-        In contrast, the static case offers a stable baseline, essential for identifying anomalies and for future spoofing detection tasks.
+    \bigskip
+    \noindent\textbf{Interpretation}\\
+    The side-by-side analysis emphasises how a smartphone-grade GNSS front-end, although perfectly
+    adequate for consumer navigation, is extremely sensitive to environment-induced dynamics when
+    operated in raw-measurement mode:
+    \begin{enumerate}
+      \item \emph{Signal quality and tracking robustness} degrade once the antenna is surrounded by
+            moving scatterers; this lowers C/No, increases the chance of cycle slips, and ultimately
+            reduces the number of simultaneous measurements available to the PVT filter.
+      \item \emph{Geometry} becomes a dominant error amplifier when only the minimum four satellites
+            are left; every metre of code noise converts into several metres of position error as
+            HDOP rises.
+      \item \emph{Clock-oscillator behaviour} that looks perfectly linear at rest exhibits noticeable
+            frequency wander when the handset experiences temperature cycling and mechanical stress.
+      \item Finally, feeding a static-receiver WLS model with data collected in motion introduces a
+            modelling mismatch that is clearly visible in the state-offset plots and should be
+            corrected by switching to a dynamic filter (e.g.\ Kalman) or by incorporating external
+            motion constraints.
+    \end{enumerate}
+
+    \medskip
+    \noindent
+    These findings highlight the importance of scenario-aware processing: identical hardware,
+    firmware, and atmospheric conditions can yield centimetre-per-second stability on a quiet
+    terrace, yet the very same setup will produce hundred-metre excursions once placed on a moving
+    tram through an urban canyon.
 
     \subsection{Impact of Spoofed Position}
 
