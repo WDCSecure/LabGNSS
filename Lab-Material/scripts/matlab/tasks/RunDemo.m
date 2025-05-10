@@ -11,7 +11,7 @@ p = PathManager(); % Retrieve project folder structure
 
 %% Define the dataset and test to run
 dataset = 'Samsung_A51'; % Options: 'dataset_b', 'Samsung_A51', 'Xiaomi_11T_Pro'
-test    = 'Monte_Cappuccini'; % Specific test for Samsung A51 or Xiaomi 11T Pro (ignored for dataset_b)
+test    = 'Monte_Cappuccini_interference'; % Specific test for Samsung A51 or Xiaomi 11T Pro (ignored for dataset_b)
 
 %% Configure paths based on the selected dataset and test
 [dirName, pr, out] = GetDatasetConfig(dataset, test, p);
@@ -31,4 +31,4 @@ figs = ProcessGnssMeasScript(dirName, pr, out, spoof, plotADR); % Process GNSS d
 %% Save the generated figures to the output directory
 format = 'both'; % Specify the format: 'png', 'fig', or 'both'
 figNamePrefix = sprintf('%s_%s', dataset, test); % Base prefix: "dataset_test"
-SaveFigures(figs, out, figNamePrefix, format); % Save all figures with the specified format
+SaveFigures(figs, out, figNamePrefix, format);   % Save all figures with the specified format

@@ -36,6 +36,8 @@ function [dirName, pr, out] = GetDatasetConfig(dataset, test, p)
                     pr = 'gnss_log_2025_05_07_12_56_15.txt';
                 case 'Aule_P_interference'
                     pr = 'gnss_log_2025_05_08_12_56_13.txt';
+                case 'Monte_Cappuccini_interference'
+                    pr = 'gnss_log_2025_05_10_11_53_38.txt';
                 otherwise
                     error('Unknown test for Samsung_A51: %s', test);
             end
@@ -56,6 +58,8 @@ function [dirName, pr, out] = GetDatasetConfig(dataset, test, p)
                     pr = 'gnss_log_2025_05_03_11_13_06.txt';
                 case 'Parco_del_Valentino_phone_call'
                     pr = 'gnss_log_2025_05_03_11_20_06.txt';
+                case 'Monte_Cappuccini_interference'
+                    pr = 'gnss_log_2025_05_10_10_40_58.txt';
                 otherwise
                     error('Unknown test for Xiaomi_11T_Pro: %s', test);
             end
