@@ -14,7 +14,7 @@
         \noindent The pseudorange measurements reveal distinct trends across scenarios. 
         In Fig. \ref{fig:static_pseudoranges_a} \textbf{more satellites} (e.g., SVs 27, 4, 20, 5, 16, 28, 29, 18) are consistently tracked, exhibiting \textbf{flat trajectories} with minimal variation (range: $\sim$2.1--2.5$\times 10^7$ m). 
         This suggests stable signal acquisition under favorable conditions. In contrast, Fig.\ref{fig:static_pseudoranges_b} displays \textbf{fewer visible satellites} (e.g., SVs 28, 29, 31, 12, 18), with several signals showing abrupt shifts or non-linear behavior (range: $\sim$2.0--2.6$\times 10^7$ m). 
-        The reduced satellite count in Plot B implies \textbf{challenging signal reception}, possibly due to environmental interference or motion-induced signal degradation.  
+        The reduced satellite count in Plot B implies \textbf{challenging signal reception}, possibly due to environmental interference or motion-induced signal degradation.
 
         \begin{figure}[h!]
             \centering
@@ -99,6 +99,8 @@
         Fig. \ref{fig:WLS_b} shows greater variability, including a sharp downward deviation during the positional spike. 
         This suggests that signal degradation or motion-induced errors propagate to both position and frequency estimates in Plot B, unlike the consistent behavior seen in Plot A.  
 
+        \vspace{-0.2em}
+
         \begin{figure}[h!]
             \centering
             \begin{subfigure}{0.23\textwidth}
@@ -113,7 +115,9 @@
                 \label{fig:WLS_b}
             \end{subfigure}
             \vspace{0.35cm}
-            \caption{Comparison of WLS states and bias}
+            \caption{Comparison of WLS states and bias
+            \vspace{-0.1cm}
+            }
             \label{fig:WLS_comparison}
         \end{figure}
     
@@ -125,7 +129,7 @@
 
         In a spoofing attack, counterfeit signals are broadcast to mimic GNSS transmissions, often altering their timing, amplitude, or content. 
         Typically, these deceptive signals are sent at higher power than the originals to mislead navigation systems. 
-        In our experiment, however, spoofing was implemented purely in software by adjusting the perceived reception time inside the professor’s script to simulate spoofing behavior.
+        In our experiment, however, spoofing was implemented purely in software by adjusting the perceived reception time inside the professor's script to simulate spoofing behavior.
             
         \noindent For the spoofed test we manually injected the coordinates of \textbf{Piazza Vittorio Veneto} (45.064749, 7.695466) — a location adjacent to our true survey point — directly into the processing script. 
         As shown in the plots, this causes the solver to converge exactly at the Piazza Vittorio Veneto coordinates rather than the true measurement site, introducing a horizontal displacement of several hundred metres.
@@ -133,10 +137,11 @@
         \noindent Despite this spatial shift, all raw observables remain essentially unchanged relative to the normal run:
         
         \begin{itemize}
-            \item \textbf{Carrier-to-noise density (C/N):} The plot of the signal quality remains unchanged compared to the base case, this because the signals are just replayed with a different timing to the victim.
+            \item \textbf{Carrier-to-noise density (C/N):} The plot of the signal quality remains unchanged compared to the base case, this because the \newpage signals are just replayed with a different timing to the victim.
             \item \textbf{Pseudorange residuals:} The overall spread remains the same, but the entire residual distribution is offset by the constant delay corresponding to the spoofed displacement.
         \end{itemize}
-        \vspace{0.25cm}
+
+        \vspace{-0.1cm}
 
         \begin{figure}[h!]
             \centering
@@ -169,6 +174,8 @@
             \caption{Spoofing scenario plots}
             \label{fig:spoofed_plots}
         \end{figure}
+
+        \vspace{0.2cm}
         
         \noindent Additionally, the 50\% (interquartile) range in the median-error distribution shrinks from approximately 8 m in the genuine case to about 4.7 m under spoofing. 
         This reduction occurs because the solver consistently “locks” onto the spoofed coordinate, decreasing variability around that false point.
@@ -176,8 +183,7 @@
     \subsection{Effects of Timing Delays}
 
         In this delayed-spoofing scenario we again target the same true survey point but now introduce a software-only replay delay: the spoofer “listens” to genuine signals, waits 1 ms, then injects the spoofed Piazza Vittorio Veneto coordinates starting at 50 s into the run. 
-        The key parameters are set as: \\ 
-        \texttt{cfg.delay = 1e-3; cfg.t\_start = 50}.
+        Key parameters: \cooltext{cfg.delay = 1e-3; cfg.t\_start = 50}.
 
         \begin{figure}[h!]
             \centering
