@@ -4,17 +4,17 @@
 \section{INTRODUCTION} \label{sec:introduction}
 
     \textbf{Global Navigation Satellite Systems (GNSS)} are fundamental to modern positioning services, widely embedded in smartphones and critical infrastructure. 
-    Despite their ubiquity, GNSS signals are inherently vulnerable to \textbf{spoofing}—an attack technique where counterfeit signals deceive the receiver into computing false location or timing information. 
+    Though widely adopted, GNSS signals are inherently vulnerable to \textbf{spoofing}—an attack technique where counterfeit signals deceive the receiver into computing false location or timing information. 
     To develop robust mitigation strategies, it is essential to understand how smartphone GNSS systems behave under both normal and manipulated conditions.
 
     \noindent This work investigates the GNSS measurement behavior of a cons-\\umer-grade \textbf{Android smartphone} across different operating scenarios. 
     We analyze baseline performance by collecting and processing raw GNSS data in two real-world environments: a static session on viewpoint of \textit{Monte dei Cappuccini} and a dynamic session aboard a tram in urban \textit{Turin}. 
-    In addition to this baseline study, we simulate spoofing by injecting false position inputs into the processing pipeline and, separately, by introducing artificial delays.
+    In addition to this baseline study, we simulate spoofing by injecting false position inputs into the processing pipeline and, separately, by introducing artificial delays, as well as evaluating signal degradation from electromagnetic interference.
 
     \noindent The remainder of this report is organized as follows.
     
     \begin{itemize}
         \item \textbf{Section~\ref{sec:methods}} describes the experimental setup, including device configuration, data collection procedures, and the processing pipeline.
-        \item \textbf{Section~\ref{sec:results}} presents results and discussion, contrasting static versus dynamic performance, examining spoofed-location impacts, and analyzing delay effects.
+        \item \textbf{Section~\ref{sec:results}} presents results and discussion, contrasting static versus dynamic performance, examining spoofed-location impacts, analyzing delay effects, and evaluating an interference scenario.
         \item \textbf{Section~\ref{sec:conclusions}} summarizes the key findings and outlines directions for future work.
     \end{itemize}
