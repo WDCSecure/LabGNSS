@@ -234,8 +234,9 @@
         \subsection{Interference Effects}
 
         \noindent
-        Analyzing the logged data reveals several hallmark effects of this compromised environment. A key detail is that data collection began before the foil shielding was applied. During this initial phase, the receiver operated under normal conditions and successfully acquired a large number of satellites with strong signals. However, once the shielding was added, the number of tracked satellites dropped significantly, and signal quality degraded—clear in the plots by a drop in C/N values and clock discontinuities.
+        Analyzing the logged data reveals several effects of this compromised environment. A key detail is that data collection began before the foil shielding was applied. During this initial phase, the receiver operated under normal conditions and successfully acquired a large number of satellites with strong signals. However, once the shielding was added, the number of tracked satellites dropped significantly, and signal quality degraded—clear in the plots by a drop in C/N values and clock discontinuities.
         
+        \noindent
         \textbf{Pseudorange measurements} (Figure~\ref{fig:interference_pr}), which estimate the distance between the receiver and satellites, exhibit gradual drift over time, indicative of accumulating errors due to signal instability. The \textbf{carrier-to-noise density ($C/N_0$)} metric (Figure~\ref{fig:interference_cno}) shows sharp initial drops followed by slow recovery, reflecting the receiver's struggle to reacquire and track satellite signals through the combined effects of shielding and interference. \textbf{Velocity estimates} derived from Doppler shifts display erratic fluctuations, particularly during periods of heightened interference, suggesting corrupted phase measurements. \textbf{Position solutions} (Figure~\ref{fig:interference_pos}) exhibit significant horizontal and vertical deviations from expected values, with error distributions expanding over time as the receiver compensates for inconsistent pseudorange inputs.
         
 
