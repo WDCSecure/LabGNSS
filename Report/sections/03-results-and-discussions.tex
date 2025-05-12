@@ -59,13 +59,13 @@
     
         \vspace{0.5em}
         \noindent\textbf{State Offsets and Timing Bias.} 
-        \\The top plots illustrate position state offsets relative to the median. In Fig. \ref{fig:WLS_a}, deviations in latitude, longitude, and altitude remain tightly constrained within $\sim \pm 50$ m, with smooth, gradual fluctuations indicating stable signal tracking. In contrast, Fig. \ref{fig:WLS_b} exhibits extreme offsets exceeding $\pm 500$ m, punctuated by abrupt spikes (e.g., a $\sim 600$ m jump near 150 seconds).  
+        \\The \textbf{top plots} illustrate position state offsets relative to the median. In Fig. \ref{fig:WLS_a}, deviations in latitude, longitude, and altitude remain tightly constrained within $\sim \pm 50$ m, with smooth, gradual fluctuations indicating stable signal tracking. In contrast, Fig. \ref{fig:WLS_b} exhibits extreme offsets exceeding $\pm 500$ m, punctuated by abrupt spikes (e.g., a $\sim 600$ m jump near 150 seconds).  
 
-        The second plot shows clock bias (common bias) trends. Both plots exhibit linear growth, but in Fig. \ref{fig:WLS_a} increases steadily ($\sim 200$ ns over 350 seconds), reflecting predictable receiver clock drift. Fig. \ref{fig:WLS_b} escalates more sharply ($\sim 250$ ns over the same interval), with a notable dip aligning with the positional spike in the top plot. This correlation implies transient disruptions affecting both position and timing stability in Plot B.  
+        The \textbf{second plot} shows clock bias (common bias) trends. Both plots exhibit linear growth, but in Fig. \ref{fig:WLS_a} increases steadily ($\sim 200$ ns over 350 seconds), reflecting predictable receiver clock drift. Fig. \ref{fig:WLS_b} escalates more sharply ($\sim 250$ ns over the same interval), with a notable dip aligning with the positional spike in the top plot. This correlation implies transient disruptions affecting both position and timing stability in Plot B.  
 
-        Velocity state estimates (third plot) further differentiate the two scenarios. Fig. \ref{fig:WLS_a} shows near-zero velocities (all components $\leq 2$ m/s), consistent with negligible movement. Fig. \ref{fig:WLS_b}, however, displays pronounced oscillations, particularly in the northward direction (peaks $\sim \pm 20$ m/s), indicating rapid or inconsistent motion.  
+        Velocity state estimates (\textbf{third plot}) further differentiate the two scenarios. Fig. \ref{fig:WLS_a} shows near-zero velocities (all components $\leq 2$ m/s), consistent with negligible movement. Fig. \ref{fig:WLS_b}, however, displays pronounced oscillations, particularly in the northward direction (peaks $\sim \pm 20$ m/s), indicating rapid or inconsistent motion.  
 
-        The bottom plots depict common frequency offset trends. Fig. \ref{fig:WLS_a} maintains a stable trajectory near $0.8$ ppm, with minor perturbations. Fig. \ref{fig:WLS_b} shows greater variability, including a sharp downward deviation during the positional spike. This suggests that signal degradation or motion-induced errors propagate to both position and frequency estimates in Plot B, unlike the consistent behavior seen in Plot A.  
+        The \textbf{bottom plots} depict common frequency offset trends. Fig. \ref{fig:WLS_a} maintains a stable trajectory near $0.8$ ppm, with minor perturbations. Fig. \ref{fig:WLS_b} shows greater variability, including a sharp downward deviation during the positional spike. This suggests that signal degradation or motion-induced errors propagate to both position and frequency estimates in Plot B, unlike the consistent behavior seen in Plot A.  
 
         \begin{figure}[h!]
             \centering
@@ -95,8 +95,8 @@
         Typically, these deceptive signals are sent at higher power than the originals to mislead navigation systems. 
         In our experiment, however, spoofing was implemented purely in software by adjusting the perceived reception time inside the professor’s script to simulate spoofing behavior.
             
-        \noindent For the spoofed test we manually injected the coordinates of Piazza Vittorio Veneto (45.064749246294085, 7.6954660899754215) — a location adjacent to our true survey point — directly into the processing script. 
-        As shown in the “Spoofed Case” plots (see attached PDF), this causes the solver to converge exactly at the Piazza Vittorio Veneto coordinates rather than the true measurement site, introducing a horizontal displacement of several hundred metres.
+        \noindent For the spoofed test we manually injected the coordinates of \textbf{Piazza Vittorio Veneto} (45.064749, 7.695466) — a location adjacent to our true survey point — directly into the processing script. 
+        As shown in the plots, this causes the solver to converge exactly at the Piazza Vittorio Veneto coordinates rather than the true measurement site, introducing a horizontal displacement of several hundred metres.
         
         \noindent Despite this spatial shift, all raw observables remain essentially unchanged relative to the normal run:
         
