@@ -236,38 +236,40 @@
         
         Pseudorange measurements (Figure~\ref{fig:interference_pr}), which estimate the distance between the receiver and satellites, exhibit gradual drift over time, indicative of accumulating errors due to signal instability. The carrier-to-noise density ($C/N_0$) metric (Figure~\ref{fig:interference_cno}) shows \textbf{sharp initial drops followed by slow recovery}, reflecting the receiver's struggle to reacquire and track satellite signals through the combined effects of shielding and interference. Velocity estimates derived from Doppler shifts display erratic fluctuations, particularly during periods of heightened interference, suggesting corrupted phase measurements. Position solutions (Figure~\ref{fig:interference_pos}) computed via weighted least squares exhibit significant horizontal and vertical deviations from expected values, with error distributions expanding over time as the receiver compensates for inconsistent pseudorange inputs.
         
+
+        \noindent
+        In such scenario, the interplay between physical obstructions and electromagnetic noise creates a hostile operating environment for GNSS receivers. The aluminum enclosure not only attenuates signal power but also shields the signals. Nearby devices, meanwhile, introduce spurious signals that desensitize the receiver's front-end, increasing the likelihood of cycle slips (loss of phase lock) and pseudorange outliers. These findings reinforce the \textbf{sensitivity of GNSS systems to real-world complexities}, where idealized assumptions of unobstructed, interference-free signal propagation rarely hold. Practical applications in urban canyons, dense foliage, or near industrial RF emitters may thus encounter similar challenges, necessitating robust mitigation strategies.
+        
+
         \begin{figure}[h!]
             \centering
             \begin{subfigure}{0.23\textwidth}
                 \includegraphics[width=\textwidth]{images/tests/Monte_Cappuccini/Interferences/Samsung_A51_Monte_Cappuccini_interference_fig1.png}
-                \caption{Pseudorange delays.}
+                \caption{Pseudoranges vs time}
                 \label{fig:interference_pr}
             \end{subfigure}
             \hfill
             \begin{subfigure}{0.23\textwidth}
                 \includegraphics[width=\textwidth]{images/tests/Monte_Cappuccini/Interferences/Samsung_A51_Monte_Cappuccini_interference_fig3.png}
-                \caption{Reduced carrier-to-noise ratio.}
+                \caption{Reduced carrier-to-noise ratio}
                 \label{fig:interference_cno}
             \end{subfigure}
             \hfill
             \begin{subfigure}{0.22\textwidth}            
                 \vspace{0.40cm}
                 \includegraphics[width=\textwidth]{images/tests/Monte_Cappuccini/Interferences/Samsung_A51_Monte_Cappuccini_interference_fig4.png}
-                \caption{Position solution drift.}
+                \caption{Position, Speed and HDOP}
                 \label{fig:interference_pos}
             \end{subfigure}
             \hfill
             \begin{subfigure}{0.23\textwidth}
                 \vspace{0.40cm}
                 \includegraphics[width=\textwidth]{images/tests/Monte_Cappuccini/Interferences/Samsung_A51_Monte_Cappuccini_interference_fig6.png}
-                \caption{Position.}
+                \caption{Position}
                 \label{fig:interference_pos}
             \end{subfigure}
             \vspace{0.35cm}
             \caption{Interference effects on GNSS measurements}
             \label{fig:interference_plots}
         \end{figure}
-        
-        \noindent
-        In such scenario, the interplay between physical obstructions and electromagnetic noise creates a hostile operating environment for GNSS receivers. The aluminum enclosure not only attenuates signal power but also shields the signals. Nearby devices, meanwhile, introduce spurious signals that desensitize the receiver's front-end, increasing the likelihood of cycle slips (loss of phase lock) and pseudorange outliers. These findings reinforce the \textbf{sensitivity of GNSS systems to real-world complexities}, where idealized assumptions of unobstructed, interference-free signal propagation rarely hold. Practical applications in urban canyons, dense foliage, or near industrial RF emitters may thus encounter similar challenges, necessitating robust mitigation strategies.
         
