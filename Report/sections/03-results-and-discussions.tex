@@ -227,4 +227,47 @@
     
         % If performed, explain signal degradations, cycle slips, and accuracy loss
 
-        % content
+        \noindent
+        To assess the impact of interference on smartphone GNSS performance, we conducted a controlled static experiment where the device was wrapped in two layers of aluminum foil and placed between two active smartphones generating Wi-Fi and Bluetooth transmissions. This setup aimed to replicate real-world RF interference and physical signal attenuation without transmitting in GNSS bands directly.
+
+        The effects were immediately evident in the recorded data. Pseudorange measurements exhibited delayed acquisition and clock discontinuities (Figure~\ref{fig:interference_pr}), indicating disrupted signal tracking at the start and end of the session. Additionally, the consistency between reported and calculated pseudorange rates degraded substantially, with some satellites showing large and persistent biases—suggesting timing instability under noisy conditions.
+
+        Signal quality, as measured by carrier-to-noise ratio (C/N), dropped sharply during the initial phase, often falling below 25 dB-Hz. This reduction, visible in Figure~\ref{fig:interference_cno}, confirms that the aluminum shielding and nearby devices significantly weakened GNSS signal reception.
+
+        Perhaps the most critical observation lies in the WLS-derived position estimates. Despite the phone remaining stationary, the position solution drifted more than 100 meters across the session. As shown in Figure~\ref{fig:interference_pos}, the horizontal accuracy degraded severely, and HDOP remained elevated due to reduced satellite visibility.
+
+        \begin{figure}[h!]
+            \centering
+            \begin{subfigure}{0.23\textwidth}
+                \includegraphics[width=\textwidth]{images/tests/Monte_Cappuccini/Interferences/Samsung_A51_Monte_Cappuccini_interference_fig1.png}
+                \caption{Pseudorange delays and clock discontinuities under interference.}
+                \label{fig:interference_pr}
+            \end{subfigure}
+            \hfill
+            \begin{subfigure}{0.23\textwidth}
+                \includegraphics[width=\textwidth]{images/tests/Monte_Cappuccini/Interferences/Samsung_A51_Monte_Cappuccini_interference_fig3.png}
+                \caption{Reduced carrier-to-noise ratio during the first phase of logging.}
+                \label{fig:interference_cno}
+            \end{subfigure}
+            \hfill
+            \begin{subfigure}{0.22\textwidth}            
+                \vspace{0.40cm}
+                \includegraphics[width=\textwidth]{images/tests/Monte_Cappuccini/Interferences/Samsung_A51_Monte_Cappuccini_interference_fig4.png}
+                \caption{Position solution drift despite stationary conditions.}
+                \label{fig:interference_pos}
+            \end{subfigure}
+            \hfill
+            \begin{subfigure}{0.23\textwidth}
+                \vspace{0.40cm}
+                \includegraphics[width=\textwidth]{images/tests/Monte_Cappuccini/Interferences/Samsung_A51_Monte_Cappuccini_interference_fig6.png}
+                \caption{Position}
+                \label{fig:interference_pos}
+            \end{subfigure}
+            \vspace{0.35cm}
+            \caption{Spoofed plots}
+            \label{fig:interference_plots}
+        \end{figure}
+
+        \noindent
+        These results show that even low-grade interference from nearby consumer electronics and basic shielding can induce measurable degradation in GNSS performance. Such vulnerability may go unnoticed by standard signal quality checks, highlighting the need for robust cross-layer detection mechanisms in mobile GNSS receivers.
+
