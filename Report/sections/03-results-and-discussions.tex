@@ -10,7 +10,7 @@
     
         \vspace{0.5em}
         \noindent\textbf{Pseudoranges vs Time.} 
-        \\The pseudorange measurements reveal distinct trends across scenarios. In \textbf{Plot A}, \textbf{more satellites} (e.g., SVs 27, 4, 20, 5, 16, 28, 29, 18) are consistently tracked, exhibiting \textbf{flat trajectories} with minimal variation (range: $\sim$2.1--2.5$\times 10^7$ m). This suggests stable signal acquisition under favorable conditions. In contrast, \textbf{Plot B} displays \textbf{fewer visible satellites} (e.g., SVs 28, 29, 31, 12, 18), with several signals showing abrupt shifts or non-linear behavior (range: $\sim$2.0--2.6$\times 10^7$ m). The reduced satellite count in Plot B implies \textbf{challenging signal reception}, possibly due to environmental interference or motion-induced signal degradation.  
+        \\The pseudorange measurements reveal distinct trends across scenarios. In Fig. \ref{fig:static_pseudoranges_a} \textbf{more satellites} (e.g., SVs 27, 4, 20, 5, 16, 28, 29, 18) are consistently tracked, exhibiting \textbf{flat trajectories} with minimal variation (range: $\sim$2.1--2.5$\times 10^7$ m). This suggests stable signal acquisition under favorable conditions. In contrast, Fig.\ref{fig:static_pseudoranges_b} displays \textbf{fewer visible satellites} (e.g., SVs 28, 29, 31, 12, 18), with several signals showing abrupt shifts or non-linear behavior (range: $\sim$2.0--2.6$\times 10^7$ m). The reduced satellite count in Plot B implies \textbf{challenging signal reception}, possibly due to environmental interference or motion-induced signal degradation.  
 
 
         \begin{figure}[h!]
@@ -18,75 +18,67 @@
             \begin{subfigure}{0.23\textwidth}
                 \includegraphics[width=\textwidth]{images/tests/Monte_Cappuccini/png/Samsung_A51_Monte_Cappuccini_fig1.png}
                 \caption{Static: Pseudoranges vs time}
+                \label{fig:static_pseudoranges_a}
             \end{subfigure}
             \hfill
             \begin{subfigure}{0.23\textwidth}
                 \includegraphics[width=\textwidth]{images/tests/Tram_15_trip_Castello_to_Pescatore/filtered/Samsung_A51_Tram_15_trip_Castello_to_Pescatore_fig1.png}
                 \caption{Dynamic: Pseudoranges vs time}
+                \label{fig:static_pseudoranges_b}
             \end{subfigure}
         \end{figure}
     
 
         \vspace{0.5em}
         \noindent\textbf{Pseudorange Change from Initial Value.} 
-        \\Deviations from initial values further highlight differences. In \textbf{Plot A}, all tracked satellites follow \textbf{shallow linear trends} ($\pm$0.5--2 m), reflecting predictable signal dynamics. The consistency across satellites (e.g., SVs 27, 28, 29) suggests robust tracking of both strong and weaker signals, including those from higher-elevation satellites. Conversely, \textbf{Plot B} shows \textbf{steeper slopes} (up to $\pm$3 m) and fragmented trends, with notable examples like SV 12 (sudden jump after $\sim$200 s) and SV 18 (continuous negative drift). The variability in Plot B indicates \textbf{intermittent signal loss or multipath effects}, particularly for satellites with marginal signal strength. 
+        \\Deviations from initial values further highlight differences. In Fig. \ref{fig:static_pseudoranges_a}, all tracked satellites follow \textbf{shallow linear trends} ($\pm$0.5--2 m), reflecting predictable signal dynamics. The consistency across satellites (e.g., SVs 27, 28, 29) suggests robust tracking of both strong and weaker signals, including those from higher-elevation satellites. Conversely, Fig. \ref{fig:static_pseudoranges_b} shows \textbf{steeper slopes} (up to $\pm$3 m) and fragmented trends, with notable examples like SV 12 (sudden jump after $\sim$200 s) and SV 18 (continuous negative drift). The variability in Plot B indicates \textbf{intermittent signal loss or multipath effects}, particularly for satellites with marginal signal strength. 
 
-        
-
-        \begin{figure}[H]
-            \centering
-            \begin{subfigure}{0.23\textwidth}
-                \includegraphics[width=\textwidth]{images/tests/Monte_Cappuccini/png/Samsung_A51_Monte_Cappuccini_fig2.png}
-                \caption{Static: $\Delta$ Pseudorange}
-            \end{subfigure}
-            \hfill
-            \begin{subfigure}{0.23\textwidth}
-                \includegraphics[width=\textwidth]{images/tests/Tram_15_trip_Castello_to_Pescatore/filtered/Samsung_A51_Tram_15_trip_Castello_to_Pescatore_fig2.png}
-                \caption{Dynamic: $\Delta$ Pseudorange}
-            \end{subfigure}
-        \end{figure}
     
         \vspace{0.5em}
         \noindent\textbf{Positioning and Speed.} 
-        \\In the Fig. The top plots depict positional estimates. \textbf{Plot A} displays a clustered distribution around its median $(45.059862^\circ, 7.697191^\circ)$, with a $50\%$ confidence ellipse spanning $\sim \pm 15$ m. This indicates stable positioning with minimal drift. In contrast, \textbf{Plot B} shows a widely scattered pattern centered at $(45.066832^\circ, 7.692336^\circ)$, featuring a $50\%$ ellipse extending $\sim \pm 400$ m. The median in Plot B lacks practical relevance due to extreme positional variability, unlike Plot A’s median, which accurately represents stationary behavior.  
+        \\In the  the plots depict positional estimates. Fig. \ref{fig:Position_Speed_a} displays a clustered distribution around its median $(45.059862^\circ, 7.697191^\circ)$, with a $50\%$ confidence ellipse spanning $\sim \pm 15$ m. This indicates stable positioning with minimal drift. In contrast, Fig. \ref{fig:Position_Speed_b} shows a widely scattered pattern centered at $(45.066832^\circ, 7.692336^\circ)$, featuring a $50\%$ ellipse extending $\sim \pm 400$ m. The median in Plot B lacks practical relevance due to extreme positional variability, unlike Plot A’s median, which accurately represents stationary behavior.  
 
-        The middle plots highlight horizontal speed trends. \textbf{Plot A} exhibits near-zero speeds ($<2$ m/s) with minor oscillations, consistent with negligible movement. Conversely, \textbf{Plot B} reveals erratic fluctuations, including a peak exceeding $20$ m/s. Speed is calculated as the rate of change between consecutive position estimates: $\Delta d / \Delta t$, where $\Delta d$ is the Euclidean distance between two points and $\Delta t$ is the elapsed time.  
+        The middle plots highlight horizontal speed trends. Fig. \ref{fig:Position_Speed_a} exhibits near-zero speeds ($<2$ m/s) with minor oscillations, consistent with negligible movement. Conversely, Fig. \ref{fig:Position_Speed_b} reveals erratic fluctuations, including a peak exceeding $20$ m/s.
 
-        The bottom plots compare HDOP and satellite visibility. \textbf{Plot A} maintains low HDOP ($<5$) with consistent visibility of 8–10 satellites, reflecting robust signal geometry. In contrast, \textbf{Plot B} shows elevated HDOP (up to $\sim 20$) alongside reduced satellite counts (4–6), indicating degraded tracking conditions. These disparities underscore differing signal quality, independent of motion assumptions.  
+        The bottom plots compare HDOP and satellite visibility. Fig. \ref{fig:Position_Speed_a} maintains low HDOP ($<5$) with consistent visibility of 8–10 satellites, reflecting robust signal geometry. In contrast, Fig. \ref{fig:Position_Speed_b} shows elevated HDOP (up to $\sim 10$) alongside reduced satellite counts (4–6), indicating degraded tracking conditions.
 
         \begin{figure}[h!]
             \centering
             \begin{subfigure}{0.23\textwidth}
                 \includegraphics[width=\textwidth]{images/tests/Monte_Cappuccini/png/Samsung_A51_Monte_Cappuccini_fig4.png}
                 \caption{Static: Position, Speed, HDOP}
+                \label{fig:Position_Speed_a}
             \end{subfigure}
             \hfill
             \begin{subfigure}{0.23\textwidth}
                 \includegraphics[width=\textwidth]{images/tests/Tram_15_trip_Castello_to_Pescatore/filtered/Samsung_A51_Tram_15_trip_Castello_to_Pescatore_fig4.png}
                 \caption{Dynamic: Position, Speed, HDOP}
+                \label{fig:Position_Speed_b}
             \end{subfigure}
         \end{figure}
     
         \vspace{0.5em}
         \noindent\textbf{State Offsets and Timing Bias.} 
-        \\The top plots illustrate position state offsets relative to the median. In \textbf{Plot A}, deviations in latitude, longitude, and altitude remain tightly constrained within $\sim \pm 50$ m, with smooth, gradual fluctuations indicating stable signal tracking. In contrast, \textbf{Plot B} exhibits extreme offsets exceeding $\pm 500$ m, punctuated by abrupt spikes (e.g., a $\sim 600$ m jump near 150 seconds).  
+        \\The top plots illustrate position state offsets relative to the median. In Fig. \ref{fig:WLS_a}, deviations in latitude, longitude, and altitude remain tightly constrained within $\sim \pm 50$ m, with smooth, gradual fluctuations indicating stable signal tracking. In contrast, Fig. \ref{fig:WLS_b} exhibits extreme offsets exceeding $\pm 500$ m, punctuated by abrupt spikes (e.g., a $\sim 600$ m jump near 150 seconds).  
 
-        The second plot shows clock bias (common bias) trends. Both plots exhibit linear growth, but \textbf{Plot A} starts at $0.1 \, \mu$s and increases steadily ($\sim 200$ ns over 350 seconds), reflecting predictable receiver clock drift. \textbf{Plot B} begins at $0.0 \, \mu$s but escalates more sharply ($\sim 250$ ns over the same interval), with a notable dip aligning with the positional spike in the top plot. This correlation implies transient disruptions affecting both position and timing stability in Plot B.  
+        The second plot shows clock bias (common bias) trends. Both plots exhibit linear growth, but in Fig. \ref{fig:WLS_a} increases steadily ($\sim 200$ ns over 350 seconds), reflecting predictable receiver clock drift. Fig. \ref{fig:WLS_b} escalates more sharply ($\sim 250$ ns over the same interval), with a notable dip aligning with the positional spike in the top plot. This correlation implies transient disruptions affecting both position and timing stability in Plot B.  
 
-        Velocity state estimates (third plot) further differentiate the two scenarios. \textbf{Plot A} shows near-zero velocities (all components $\leq 2$ m/s), consistent with negligible movement. \textbf{Plot B}, however, displays pronounced oscillations, particularly in the northward direction (peaks $\sim \pm 20$ m/s), indicating rapid or inconsistent motion.  
+        Velocity state estimates (third plot) further differentiate the two scenarios. Fig. \ref{fig:WLS_a} shows near-zero velocities (all components $\leq 2$ m/s), consistent with negligible movement. Fig. \ref{fig:WLS_b}, however, displays pronounced oscillations, particularly in the northward direction (peaks $\sim \pm 20$ m/s), indicating rapid or inconsistent motion.  
 
-        The bottom plots depict common frequency offset trends. \textbf{Plot A} maintains a stable trajectory near $0.8$ ppm, with minor perturbations. \textbf{Plot B} shows greater variability, including a sharp downward deviation during the positional spike. This suggests that signal degradation or motion-induced errors propagate to both position and frequency estimates in Plot B, unlike the consistent behavior seen in Plot A.  
+        The bottom plots depict common frequency offset trends. Fig. \ref{fig:WLS_a} maintains a stable trajectory near $0.8$ ppm, with minor perturbations. Fig. \ref{fig:WLS_b} shows greater variability, including a sharp downward deviation during the positional spike. This suggests that signal degradation or motion-induced errors propagate to both position and frequency estimates in Plot B, unlike the consistent behavior seen in Plot A.  
 
         \begin{figure}[h!]
             \centering
             \begin{subfigure}{0.23\textwidth}
                 \includegraphics[width=\textwidth]{images/tests/Monte_Cappuccini/png/Samsung_A51_Monte_Cappuccini_fig5.png}
                 \caption{Static: WLS states and bias}
+                \label{fig:WLS_a}
             \end{subfigure}
             \hfill
             \begin{subfigure}{0.23\textwidth}
                 \includegraphics[width=\textwidth]{images/tests/Tram_15_trip_Castello_to_Pescatore/filtered/Samsung_A51_Tram_15_trip_Castello_to_Pescatore_fig5.png}
                 \caption{Dynamic: WLS states and bias}
+                \label{fig:WLS_b}
             \end{subfigure}
         \end{figure}
     
