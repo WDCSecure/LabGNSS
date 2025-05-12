@@ -62,17 +62,16 @@
             \item \textbf{Visualization and Comparison:} output plots from MATLAB, including pseudorange, pseudorange rates, and position solutions, were generated to facilitate comparative analysis of the static and dynamic scenarios.
         \end{enumerate}
 
-        \noindent Results from this processing pipeline provided insights into the differences in GNSS performance under static and dynamic conditions.
+        % \noindent Results from this processing pipeline provided insights into the differences in GNSS performance under static and dynamic conditions.
     
     \subsection{Spoofed-Input Configuration}
 
         Spoofing scenarios were emulated by introducing artificial variations to the recorded GNSS data through MATLAB processing. 
         Specifically, mock positions were assigned by adjusting the parameter \cooltext{spoof.position}, which represents modified latitude, longitude, and altitude coordinates. 
-        Additionally, artificial time delays were tested by adjusting the \cooltext{spoof.delay} parameter, typically in milliseconds, to mimic delayed GNSS signal arrival. 
+        Additionally, artificial time delays were tested by adjusting the \cooltext{spoof.delay} parameter, typically in milliseconds, to mimic delayed GNSS signal arrival, and \cooltext{cfg.t\_start} parameter to make the spoofed signal appear some seconds after the start of the session.
         Such configurations facilitated evaluation of the impact of spoofing scenarios on position estimation reliability and accuracy.
 
     \subsection{Interference Scenario}
     
-        Even a worst-case interference situation was simulated, replicating conditions in the vicinity of potential interference sources such as broadcasting antennas or communication areas of high density. 
-        GNSS data were collected near such sources of interference, and then processed with the same MATLAB procedure. 
-        Nominal condition comparison was established to analyze the impact of external interference on GNSS observables such as variation in pseudorange measurements, carrier-to-noise ratio, and positional accuracy overall.
+        Even a worst-case interference situation was simulated, replicating conditions in the vicinity of potential interference sources or something capable of shielding the signal, such as aluminum foil. 
+        Nominal condition comparison was established to analyze the impact of external interference on GNSS observables such as variation in pseudorange measurements, carrier-to-noise ratio, positional accuracy overall and quality of the signal.
