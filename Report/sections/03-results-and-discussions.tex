@@ -166,7 +166,7 @@
                 \label{fig:Spoofed_d}
             \end{subfigure}
             \vspace{0.35cm}
-            \caption{Spoofed plots}
+            \caption{Spoofing scenario plots}
             \label{fig:spoofed_plots}
         \end{figure}
         
@@ -207,7 +207,7 @@
                 \label{fig:Delay_d}
             \end{subfigure}
             \vspace{0.35cm}
-            \caption{Spoofed with delay plots}
+            \caption{Spoofing plus Delay scenario plots}
             \label{fig:delay_plots}
         \end{figure}
 
@@ -228,14 +228,13 @@
         % If performed, explain signal degradations, cycle slips, and accuracy loss
 
         \noindent
-        To assess the impact of interference on smartphone GNSS performance, we conducted a controlled static experiment where the device was wrapped in two layers of aluminum foil and placed between two active smartphones generating Wi-Fi and Bluetooth transmissions. This setup aimed to replicate real-world RF interference and physical signal attenuation without transmitting in GNSS bands directly.
 
-        The effects were immediately evident in the recorded data. Pseudorange measurements exhibited delayed acquisition and clock discontinuities (Figure~\ref{fig:interference_pr}), indicating disrupted signal tracking at the start and end of the session. Additionally, the consistency between reported and calculated pseudorange rates degraded substantially, with some satellites showing large and persistent biases—suggesting timing instability under noisy conditions.
-
-        Signal quality, as measured by carrier-to-noise ratio (C/N), dropped sharply during the initial phase, often falling below 25 dB-Hz. This reduction, visible in Figure~\ref{fig:interference_cno}, confirms that the aluminum shielding and nearby devices significantly weakened GNSS signal reception.
-
-        Perhaps the most critical observation lies in the WLS-derived position estimates. Despite the phone remaining stationary, the position solution drifted more than 100 meters across the session. As shown in Figure~\ref{fig:interference_pos}, the horizontal accuracy degraded severely, and HDOP remained elevated due to reduced satellite visibility.
-
+        Analyzing the logged data reveals several hallmark effects of this compromised environment. 
+        Pseudorange measurements (Fig~\ref{fig:interference_pr}), which estimate the distance between the receiver and satellites, exhibit gradual drift over time, indicative of accumulating errors due to signal instability. 
+        The carrier-to-noise density ($C/N_0$) metric (Figure~\ref{fig:interference_cno}), shows sharp initial drops followed by slow recovery, reflecting the receiver's struggle to reacquire and track satellite signals through the combined effects of shielding and interference. 
+        Velocity estimates derived from Doppler shifts display erratic fluctuations, particularly during periods of heightened interference, suggesting corrupted phase measurements. 
+        Position solutions Figure~\ref{fig:interference_pos} computed via weighted least squares exhibit significant horizontal and vertical deviations from expected values, with error distributions expanding over time as the receiver compensates for inconsistent pseudorange inputs. 
+        
         \begin{figure}[h!]
             \centering
             \begin{subfigure}{0.23\textwidth}
@@ -264,10 +263,9 @@
                 \label{fig:interference_pos}
             \end{subfigure}
             \vspace{0.35cm}
-            \caption{Spoofed plots}
+            \caption{Interference effects on GNSS measurements}
             \label{fig:interference_plots}
         \end{figure}
 
         \noindent
-        These results show that even low-grade interference from nearby consumer electronics and basic shielding can induce measurable degradation in GNSS performance. Such vulnerability may go unnoticed by standard signal quality checks, highlighting the need for robust cross-layer detection mechanisms in mobile GNSS receivers.
-
+        In such scenario, the interplay between physical obstructions and electromagnetic noise creates a hostile operating environment for GNSS receivers. The aluminum enclosure not only attenuates signal power but also shields the signals. Nearby devices, meanwhile, introduce spurious signals that desensitize the receiver's front-end, increasing the likelihood of cycle slips (loss of phase lock) and pseudorange outliers. These findings reinforce the sensitivity of GNSS systems to real-world complexities, where idealized assumptions of unobstructed, interference-free signal propagation rarely hold. Practical applications in urban canyons, dense foliage, or near industrial RF emitters may thus encounter similar challenges, necessitating robust mitigation strategies.
