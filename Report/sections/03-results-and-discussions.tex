@@ -20,15 +20,18 @@
             \centering
             \begin{subfigure}{0.23\textwidth}
                 \includegraphics[width=\textwidth]{images/tests/Monte_Cappuccini/png/Samsung_A51_Monte_Cappuccini_fig1.png}
-                \caption{Static: Pseudoranges vs time}
+                \caption{Static}
                 \label{fig:static_pseudoranges_a}
             \end{subfigure}
             \hfill
             \begin{subfigure}{0.23\textwidth}
                 \includegraphics[width=\textwidth]{images/tests/Tram_15_trip_Castello_to_Pescatore/filtered/Samsung_A51_Tram_15_trip_Castello_to_Pescatore_fig1.png}
-                \caption{Dynamic: Pseudoranges vs time}
+                \caption{Dynamic}
                 \label{fig:static_pseudoranges_b}
             \end{subfigure}
+            \vspace{0.35cm}
+            \caption{Comparison of Pseudoranges vs Time}
+            \label{fig:pseudoranges_comparison}
         \end{figure}
 
         \vspace{0.5em}
@@ -61,15 +64,18 @@
             \centering
             \begin{subfigure}{0.23\textwidth}
                 \includegraphics[width=\textwidth]{images/tests/Monte_Cappuccini/png/Samsung_A51_Monte_Cappuccini_fig4.png}
-                \caption{Static: Position, Speed, HDOP}
+                \caption{Static}
                 \label{fig:Position_Speed_a}
             \end{subfigure}
             \hfill
             \begin{subfigure}{0.23\textwidth}
                 \includegraphics[width=\textwidth]{images/tests/Tram_15_trip_Castello_to_Pescatore/filtered/Samsung_A51_Tram_15_trip_Castello_to_Pescatore_fig4.png}
-                \caption{Dynamic: Position, Speed, HDOP}
+                \caption{Dynamic}
                 \label{fig:Position_Speed_b}
             \end{subfigure}
+            \vspace{0.35cm}
+            \caption{Comparison of Position, Speed, and HDOP}
+            \label{fig:position_speed_comparison}
         \end{figure}
     
         \vspace{0.5em}
@@ -97,15 +103,18 @@
             \centering
             \begin{subfigure}{0.23\textwidth}
                 \includegraphics[width=\textwidth]{images/tests/Monte_Cappuccini/png/Samsung_A51_Monte_Cappuccini_fig5.png}
-                \caption{Static: WLS states and bias}
+                \caption{Static}
                 \label{fig:WLS_a}
             \end{subfigure}
             \hfill
             \begin{subfigure}{0.23\textwidth}
                 \includegraphics[width=\textwidth]{images/tests/Tram_15_trip_Castello_to_Pescatore/filtered/Samsung_A51_Tram_15_trip_Castello_to_Pescatore_fig5.png}
-                \caption{Dynamic: WLS states and bias}
+                \caption{Dynamic}
                 \label{fig:WLS_b}
             \end{subfigure}
+            \vspace{0.35cm}
+            \caption{Comparison of WLS states and bias}
+            \label{fig:WLS_comparison}
         \end{figure}
     
     \medskip
@@ -127,31 +136,38 @@
             \item \textbf{Carrier-to-noise density (C/N):} The plot of the signal quality remains unchanged compared to the base case, this because the signals are just replayed with a different timing to the victim.
             \item \textbf{Pseudorange residuals:} The overall spread remains the same, but the entire residual distribution is offset by the constant delay corresponding to the spoofed displacement.
         \end{itemize}
+        \vspace{0.25cm}
 
         \begin{figure}[h!]
             \centering
             \begin{subfigure}{0.23\textwidth}
                 \includegraphics[width=\textwidth]{images/tests/Monte_Cappuccini/Spoofing/task5_figures/Samsung_A51_Monte_Cappuccini_fig1.png}
-                \caption{Spoofed: Pseudoranges vs time}
+                \caption{Pseudoranges vs time}
+                \label{fig:Spoofed_a}
             \end{subfigure}
             \hfill
-            \begin{subfigure}{0.23\textwidth}
-                \includegraphics[width=\textwidth]{images/tests/Monte_Cappuccini/Spoofing/task5_figures/Samsung_A51_Monte_Cappuccini_fig4.png}
-                \caption{Spoofed: Position, Speed, HDOP}
-            \end{subfigure}
-        \end{figure}
-
-        \begin{figure}[h!]
-            \centering
             \begin{subfigure}{0.23\textwidth}
                 \includegraphics[width=\textwidth]{images/tests/Monte_Cappuccini/Spoofing/task5_figures/Samsung_A51_Monte_Cappuccini_fig5.png}
-                \caption{Spoofed: WLS states and bias}
+                \caption{WLS states and bias}
+                \label{fig:Spoofed_b}
+            \end{subfigure}
+            \hfill
+            \begin{subfigure}{0.22\textwidth}            
+                \vspace{0.40cm}
+                \includegraphics[width=\textwidth]{images/tests/Monte_Cappuccini/Spoofing/task5_figures/Samsung_A51_Monte_Cappuccini_fig4.png}
+                \caption{Position, Speed and HDOP}
+                \label{fig:Spoofed_c}
             \end{subfigure}
             \hfill
             \begin{subfigure}{0.23\textwidth}
+                \vspace{0.40cm}
                 \includegraphics[width=\textwidth]{images/tests/Monte_Cappuccini/Spoofing/task5_figures/Samsung_A51_Monte_Cappuccini_fig6.png}
-                \caption{Spoofed: Position}
+                \caption{Position}
+                \label{fig:Spoofed_d}
             \end{subfigure}
+            \vspace{0.35cm}
+            \caption{Spoofed plots}
+            \label{fig:spoofed_plots}
         \end{figure}
         
         \noindent Additionally, the 50\% (interquartile) range in the median-error distribution shrinks from approximately 8 m in the genuine case to about 4.7 m under spoofing. 
@@ -167,27 +183,34 @@
             \centering
             \begin{subfigure}{0.23\textwidth}
                 \includegraphics[width=\textwidth]{images/tests/Monte_Cappuccini/Spoofing/task6_figures/Samsung_A51_Monte_Cappuccini_fig1.png}
-                \caption{Delay: Pseudoranges vs time}
-            \end{subfigure}
-            \hfill
-            \begin{subfigure}{0.23\textwidth}
-                \includegraphics[width=\textwidth]{images/tests/Monte_Cappuccini/Spoofing/task6_figures/Samsung_A51_Monte_Cappuccini_fig4.png}
-                \caption{Delay: Position, Speed, HDOP}
-            \end{subfigure}
-        \end{figure}
-
-                \begin{figure}[h!]
-            \centering
-            \begin{subfigure}{0.23\textwidth}
-                \includegraphics[width=\textwidth]{images/tests/Monte_Cappuccini/Spoofing/task6_figures/Samsung_A51_Monte_Cappuccini_fig5.png}
-                \caption{Delay: WLS states and bias}
+                \caption{Pseudoranges vs time}
+                \label{fig:Delay_a}
             \end{subfigure}
             \hfill
             \begin{subfigure}{0.23\textwidth}
                 \includegraphics[width=\textwidth]{images/tests/Monte_Cappuccini/Spoofing/task6_figures/Samsung_A51_Monte_Cappuccini_fig6.png}
-                \caption{Delay: Position}
+                \caption{Position}
+                \label{fig:Delay_b}
             \end{subfigure}
+            \hfill
+            \begin{subfigure}{0.23\textwidth}
+                \vspace{0.40cm}
+                \includegraphics[width=\textwidth]{images/tests/Monte_Cappuccini/Spoofing/task6_figures/Samsung_A51_Monte_Cappuccini_fig4.png}
+                \caption{Position, Speed, HDOP}
+                \label{fig:Delay_c}
+            \end{subfigure}
+            \hfill
+            \begin{subfigure}{0.23\textwidth}
+                \vspace{0.40cm}
+                \includegraphics[width=\textwidth]{images/tests/Monte_Cappuccini/Spoofing/task6_figures/Samsung_A51_Monte_Cappuccini_fig5.png}
+                \caption{WLS states and bias}
+                \label{fig:Delay_d}
+            \end{subfigure}
+            \vspace{0.35cm}
+            \caption{Spoofed with delay plots}
+            \label{fig:delay_plots}
         \end{figure}
+
 
         \noindent As visible in the plots, all observables remain nominal until t=50 s, at which point the solver's estimated position and receiver clock-bias exhibit a clear discontinuity as the spoof takes effect.
 
