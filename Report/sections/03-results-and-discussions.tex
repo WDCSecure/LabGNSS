@@ -185,6 +185,19 @@
         In this delayed-spoofing scenario we again target the same true survey point but now introduce a software-only replay delay: the spoofer “listens” to genuine signals, waits 1 ms, then injects the spoofed Piazza Vittorio Veneto coordinates starting at 50 s into the run. 
         Key parameters: \cooltext{cfg.delay = 1e-3; cfg.t\_start = 50}.
 
+
+        \noindent As visible in the plots, all observables remain nominal until t=50 s, at which point the solver's estimated position and receiver clock-bias exhibit a clear discontinuity as the spoof takes effect.
+
+        \begin{itemize}
+            \item \textbf{Position solution:} Prior to 50 s, the estimated coordinate coincides with the true static point. Immediately after 50 s, the solution jumps to the spoofed Piazza Vittorio Veneto location, replicating the static-spoof offset of several hundred metres.  
+            \item \textbf{Receiver clock-bias:} A sudden step of appears in the estimated receiver clock-bias track, directly corresponding to the 1 ms replay delay needed to shift the range solution by the planar offset.  
+            \item \textbf{Carrier-to-noise density (C/N):} The C/N time-series shows no amplitude change at t=50 s—signal strength is unaffected by delay.  
+            \item \textbf{Pseudorange residuals:} Residuals maintain the same spread, but their mean shifts abruptly at 50 s by the additional delay delta t.  
+        \end{itemize}
+        
+        \noindent Even a 1 ms replay delay can therefore introduce a large positional error and matching clock-bias shift without altering any standard observables. Detecting such covert delay-based spoofing thus requires monitoring for timing discontinuities.
+
+
         \begin{figure}[h!]
             \centering
             \begin{subfigure}{0.23\textwidth}
@@ -218,27 +231,16 @@
         \end{figure}
 
 
-        \noindent As visible in the plots, all observables remain nominal until t=50 s, at which point the solver's estimated position and receiver clock-bias exhibit a clear discontinuity as the spoof takes effect.
-
-        \begin{itemize}
-            \item \textbf{Position solution:} Prior to 50 s, the estimated coordinate coincides with the true static point. Immediately after 50 s, the solution jumps to the spoofed Piazza Vittorio Veneto location, replicating the static-spoof offset of several hundred metres.  
-            \item \textbf{Receiver clock-bias:} A sudden step of appears in the estimated receiver clock-bias track, directly corresponding to the 1 ms replay delay needed to shift the range solution by the planar offset.  
-            \item \textbf{Carrier-to-noise density (C/N):} The C/N time-series shows no amplitude change at t=50 s—signal strength is unaffected by delay.  
-            \item \textbf{Pseudorange residuals:} Residuals maintain the same spread, but their mean shifts abruptly at 50 s by the additional delay delta t.  
-        \end{itemize}
-        
-        \noindent Even a 1 ms replay delay can therefore introduce a large positional error and matching clock-bias shift without altering any standard observables. Detecting such covert delay-based spoofing thus requires monitoring for timing discontinuities.
-
         \subsection{Interference Effects}
 
         \noindent
-        Analyzing the logged data reveals several hallmark effects of this compromised environment. A key detail is that \textbf{data collection began before the foil shielding was applied}. During this initial phase, the receiver operated under normal conditions and successfully acquired a large number of satellites with strong signals. However, once the shielding was added, the number of tracked satellites dropped significantly, and signal quality degraded—clear in the plots by a drop in C/N values and clock discontinuities.
+        Analyzing the logged data reveals several hallmark effects of this compromised environment. A key detail is that data collection began before the foil shielding was applied. During this initial phase, the receiver operated under normal conditions and successfully acquired a large number of satellites with strong signals. However, once the shielding was added, the number of tracked satellites dropped significantly, and signal quality degraded—clear in the plots by a drop in C/N values and clock discontinuities.
         
-        Pseudorange measurements (Figure~\ref{fig:interference_pr}), which estimate the distance between the receiver and satellites, exhibit gradual drift over time, indicative of accumulating errors due to signal instability. The carrier-to-noise density ($C/N_0$) metric (Figure~\ref{fig:interference_cno}) shows \textbf{sharp initial drops followed by slow recovery}, reflecting the receiver's struggle to reacquire and track satellite signals through the combined effects of shielding and interference. Velocity estimates derived from Doppler shifts display erratic fluctuations, particularly during periods of heightened interference, suggesting corrupted phase measurements. Position solutions (Figure~\ref{fig:interference_pos}) computed via weighted least squares exhibit significant horizontal and vertical deviations from expected values, with error distributions expanding over time as the receiver compensates for inconsistent pseudorange inputs.
+        \textbf{Pseudorange measurements} (Figure~\ref{fig:interference_pr}), which estimate the distance between the receiver and satellites, exhibit gradual drift over time, indicative of accumulating errors due to signal instability. The \textbf{carrier-to-noise density ($C/N_0$)} metric (Figure~\ref{fig:interference_cno}) shows sharp initial drops followed by slow recovery, reflecting the receiver's struggle to reacquire and track satellite signals through the combined effects of shielding and interference. \textbf{Velocity estimates} derived from Doppler shifts display erratic fluctuations, particularly during periods of heightened interference, suggesting corrupted phase measurements. \textbf{Position solutions} (Figure~\ref{fig:interference_pos}) exhibit significant horizontal and vertical deviations from expected values, with error distributions expanding over time as the receiver compensates for inconsistent pseudorange inputs.
         
 
         \noindent
-        In such scenario, the interplay between physical obstructions and electromagnetic noise creates a hostile operating environment for GNSS receivers. The aluminum enclosure not only attenuates signal power but also shields the signals. Nearby devices, meanwhile, introduce spurious signals that desensitize the receiver's front-end, increasing the likelihood of cycle slips (loss of phase lock) and pseudorange outliers. These findings reinforce the \textbf{sensitivity of GNSS systems to real-world complexities}, where idealized assumptions of unobstructed, interference-free signal propagation rarely hold. Practical applications in urban canyons, dense foliage, or near industrial RF emitters may thus encounter similar challenges, necessitating robust mitigation strategies.
+        In such scenario, the interplay between physical obstructions and electromagnetic noise creates a hostile operating environment for GNSS receivers. The aluminum enclosure not only attenuates signal power but also \textbf{shields them}. Nearby devices, meanwhile, introduce spurious signals that desensitize the receiver's front-end, increasing the likelihood of cycle slips (loss of phase lock) and pseudorange outliers. These findings reinforce the sensitivity of GNSS systems to real-world complexities, where idealized assumptions of unobstructed, interference-free signal propagation rarely hold. Practical applications in urban canyons, dense foliage, or near industrial RF emitters may thus encounter similar challenges, necessitating robust mitigation strategies.
         
 
         \begin{figure}[h!]
